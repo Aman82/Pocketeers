@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'pages#index'
+
   get 'curriculums/index'
 
   get 'curriculums/show'

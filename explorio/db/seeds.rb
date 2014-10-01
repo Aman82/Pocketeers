@@ -5,3 +5,106 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+users = User.create([
+  {
+    first_name: 'Alex',
+    last_name: 'Dubelko',
+    username: 'Thor',
+    email: 'alex@ga.com',
+    password_digest: 'alexeverything',
+    phone_number: '310-787-9900',
+    privilege: 4
+  },
+  {
+    first_name: 'Wilhem',
+    last_name: 'Wundt',
+    username: 'wilhemwundt',
+    email: 'wilhem@ga.com',
+    password_digest: 'wilhem',
+    phone_number: '310-787-9999',
+    privilege: 3
+  },
+  {
+    first_name: 'Ben',
+    last_name: 'An',
+    username: 'BigBen',
+    email: 'bigbenbeeper@gmail.com',
+    password_digest: 'beneverything',
+    phone_number: '310-787-9988',
+    privilege: 2
+  },
+  {
+    first_name: 'Dan',
+    last_name: 'Wilhem',
+    username: 'DanDan',
+    email: 'dan@ga.com',
+    password_digest: 'daneverything',
+    phone_number: '310-787-8800',
+    privilege: 1
+  }
+  ]);
+
+curriculums = Curriculum.create([
+  {
+    title: 'Learn to Lol',
+    topic: 'League of Legends',
+    summary: 'we are going to learn about how to maximize your skills on a macbook pro. You will play with no mouse, only a trackpad',
+    syllabus:
+      'week 0: What is a mac?
+      week 1: The art of the trackpad
+      week 2: Gaming is a lifestyle
+      week 3: Advanced topics on LOL',
+    timeframe: '4 Weeks',
+
+    user: users[1]   #curator of curriculum
+  }
+  ]);
+
+
+groups = Group.create([
+  { 
+    name: 'Fun with Bill',
+    topic: "DataMining with Python",
+    location: 'Santa Monica Promanade',
+    start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+    end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+
+    curriculum: curriculums[0], # curriculum for the course
+
+    users: [users[2]] # group mentor
+
+    # users: [users[3]] # student of group
+  },
+
+  { 
+    name: 'Learn to Lol',
+    topic: "Advanced League of Legends Training on Macs",
+    location: '1637 Broadway',
+    start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+    end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+
+    users: [users[1]]
+  }
+  ]);
+
+UserGroup.all.first.privilege = 3
+
+# reviews = Review.create([
+#   rating: 5,
+#   comment: 'Best course of my life, thank you so much',
+#   timestamp: DateTime.new(2001,2,3,4,5,6,'+7'),
+
+#   user: users[3],
+#   curriculum: curriculums[0]
+
+
+#   ])
+
+
+# interests = Interest.create([
+#   {
+
+#   }
+#   ]);
+
