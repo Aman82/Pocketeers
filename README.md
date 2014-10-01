@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-Am i really editing this?
-=======
-This is the alex branch that i am esting
+I AM EDITING THIS TEzxt FILEZ
 
->>>>>>> alex
+Testing
 Benn testinng
+=======
+
+TEST BY ALEX
