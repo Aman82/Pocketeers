@@ -1,0 +1,10 @@
+
+<% if logged_in? %>
+	<p>You are: <strong>LOGGED IN</strong></p>
+	<p>Your user name is: <strong><%= current_user.first_name %></strong>. Your email is: <strong><%= current_user.email %></strong></p>
+	<%= link_to "Log out!", signout_path, method: 'delete' %>
+<% else %>
+	<p>You are: <strong>LOGGED OUT</strong></p>
+	<%= link_to "Log in!", sessions_path %><br>
+<% end %>
+

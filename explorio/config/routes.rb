@@ -1,61 +1,17 @@
 Rails.application.routes.draw do
 root 'pages#index'
-resources :sessions
+
+#resources :sessions
+  get 'sessions/index' => 'sessions#index'
+  get 'signin/' => 'sessions#new', as: :sessions
+  post 'signin/' => 'sessions#create'
+  delete 'signout/' => 'sessions#destroy', as: :signout
 resources :users
 resources :curriculums
 resources :groups
 resources :pages
 
-  # get 'sessions/new'
-
-  # get 'sessions/create'
-
-  # get 'sessions/destroy'
-
-  # get 'curriculums/index'
-
-  # get 'curriculums/show'
-
-  # get 'curriculums/new'
-
-  # get 'curriculums/create'
-
-  # get 'curriculums/edit'
-
-  # get 'curriculums/update'
-
-  # get 'curriculums/destroy'
-
-  # get 'users/index'
-
-  # get 'users/show'
-
-  # get 'users/new'
-
-  # get 'users/create'
-
-  # get 'users/edit'
-
-  # get 'users/update'
-
-  # get 'users/destroy'
-
-  # get 'groups/index'
-
-  # get 'groups/show'
-
-  # get 'groups/new'
-
-  # get 'groups/create'
-
-  # get 'groups/edit'
-
-  # get 'groups/update'
-
-  # get 'groups/destroy'
-
-  # get 'pages/index'
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
