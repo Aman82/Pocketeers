@@ -1,50 +1,60 @@
 Rails.application.routes.draw do
+root 'pages#index'
+resources :sessions
+resources :users
+resources :curriculums
+resources :groups
+resources :pages
 
-  root 'pages#index'
+  # get 'sessions/new'
 
-  get 'curriculums/index'
+  # get 'sessions/create'
 
-  get 'curriculums/show'
+  # get 'sessions/destroy'
 
-  get 'curriculums/new'
+  # get 'curriculums/index'
 
-  get 'curriculums/create'
+  # get 'curriculums/show'
 
-  get 'curriculums/edit'
+  # get 'curriculums/new'
 
-  get 'curriculums/update'
+  # get 'curriculums/create'
 
-  get 'curriculums/destroy'
+  # get 'curriculums/edit'
 
-  get 'users/index'
+  # get 'curriculums/update'
 
-  get 'users/show'
+  # get 'curriculums/destroy'
 
-  get 'users/new'
+  # get 'users/index'
 
-  get 'users/create'
+  # get 'users/show'
 
-  get 'users/edit'
+  # get 'users/new'
 
-  get 'users/update'
+  # get 'users/create'
 
-  get 'users/destroy'
+  # get 'users/edit'
 
-  get 'groups/index'
+  # get 'users/update'
 
-  get 'groups/show'
+  # get 'users/destroy'
 
-  get 'groups/new'
+  # get 'groups/index'
 
-  get 'groups/create'
+  # get 'groups/show'
 
-  get 'groups/edit'
+  # get 'groups/new'
 
-  get 'groups/update'
+  # get 'groups/create'
 
-  get 'groups/destroy'
+  # get 'groups/edit'
 
-  get 'pages/index'
+  # get 'groups/update'
+
+  # get 'groups/destroy'
+
+  # get 'pages/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

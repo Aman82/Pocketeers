@@ -1,2 +1,33 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Sign Up!</h1>
+
+<!-- Loop through each key,value error message pair -->
+<p>Errors:
+<ul>
+<!-- <% @user.errors.messages.each do |key,value| %>
+	<li><%= key %>: <%= value.join(", ") %>
+<% end %> -->
+</ul></p>
+
+<%= form_for @user do |f| %>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %><br>
+
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %><br>
+
+	<%= f.label :email %>
+	<%= f.text_field :email %><br>
+
+	<%= f.label :email_confirmation %>
+	<%= f.text_field :email_confirmation %><br>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %><br>
+
+	<%= f.label :password_confirmation %>
+	<%= f.password_field :password_confirmation %><br>
+
+	<%= f.submit "Sign Me Up!" %> 
+<% end %>
+
+<!-- <%= debug(@user.errors) %> -->
