@@ -21,12 +21,22 @@ class CurriculumsController < ApplicationController
   end
 
   def edit
+    @curriculum = Curriculum.find(params[:id])
   end
 
   def update
+    @curriculum = Curriculum.new(required_params)
+    if @curriculum.save
+      redirect_to curriculums_path
+    else 
+      render new
+    end
   end
 
   def destroy
+    @curriculum = Curriculum.find(params[:id])
+    @curriculum.destroy
+    redirect_to curriculums_path
   end
 
   private

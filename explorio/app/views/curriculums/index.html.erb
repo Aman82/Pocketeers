@@ -4,9 +4,9 @@
 	<li><%= c.title %></li>
 	<li><%= c.topic %></li>
 	<li><%= c.summary %></li>
-	<li><%= c.syllabus %></li>
+	<li><%= truncate(c.syllabus, length: 55, separator: '') %></li>
 	<li><%= c.timeframe %></li>
-	<li><%= c.created_at %></li>
-	<li><%= c.updated_at %></li><br/>
-	<li><%= link_to "show framework", show_path(c)%></li>
+	<li><%= time.c.created_at(:short) %></li>
+	<li><%= c.updated_at %></li>
+	<li><%= link_to "show framework", c %></li><br/>
 <% end %>

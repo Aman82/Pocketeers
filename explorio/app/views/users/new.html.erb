@@ -1,13 +1,13 @@
-<h1>Sign Up!</h1>
 
-<!-- Loop through each key,value error message pair -->
-<p>Errors:
-<ul>
+<div class="large-4 columns">
 <% @user.errors.messages.each do |key,value| %>
 	<li><%= key %>: <%= value.join(", ") %>
 <% end %> 
-</ul></p>
-
+testing
+<!-- Loop through each key,value error message pair -->
+</div>
+<div class="large-4 columns">
+<h1>Sign Up!</h1>
 <%= form_for @user do |f| %>
 	<%= f.label :first_name %>
 	<%= f.text_field :first_name %><br>
@@ -29,5 +29,10 @@
 
 	<%= f.submit "Sign Me Up!" %> 
 <% end %>
+</div>
+<div class="large-4 columns">
+<p>Errors:</p>
 
-<!-- <%= debug(@user.errors) %> -->
+<br/><br/><br/><br/>
+<%= debug(@user.errors) %>
+</div>
