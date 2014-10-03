@@ -15,6 +15,7 @@
     <li class="name">
       <h1><a href="#">Explor.io</a></h1>
     </li>
+
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
@@ -23,12 +24,14 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <li><a href="#">Checkout Courses</a></li>
-      <li class="active"><a href="#">Sign in</a></li>
+      <li class="active"><%= link_to "Sign in", signin_path %></li>
       <li class="has-dropdown">
         <a href="#">Join Now</a>
         <ul class="dropdown">
+          
+          <li class="active"><%= link_to "Sign up", 'users/new' %></li>
+          <li class="active"><%= link_to "Log Out", signout_path, method: 'delete'  %></li>
           <li><a href="#">About Us</a></li>
-          <li class="active"><a href="#">Sign up</a></li>
         </ul>
       </li>
     </ul>

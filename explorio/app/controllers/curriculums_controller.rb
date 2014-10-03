@@ -1,14 +1,23 @@
 class CurriculumsController < ApplicationController
   def index
+    @curriculums = Curriculum.all
   end
 
   def show
+    @curriculum = Curriculum.find(params[:id])
   end
 
   def new
+    @curriculum = Curriculum.new
   end
 
   def create
+    @curriculum = Curriculum.new(required_params)
+    if @curriculum.save
+      redirect_to curriculums_path
+    else 
+      render new
+    end
   end
 
   def edit
@@ -18,5 +27,11 @@ class CurriculumsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def required_params
+    params.require(:curriculum).permit(:title, :topic, :summary, :syllabus, :timeframe)
   end
 end
