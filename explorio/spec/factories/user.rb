@@ -5,6 +5,6 @@ FactoryGirl.define do
   	username "Hufflepuff"
   	email "alex@gmail.com"
     password_digest "11121754726178dbv"
-    priviledge 4
+    privilege 4
   end
 end

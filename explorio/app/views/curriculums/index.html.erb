@@ -1,2 +1,12 @@
-<h1>Curriculums#index</h1>
-<p>Find me in app/views/curriculums/index.html.erb</p>
+<h1>Hey everyone look at the courses we offer</h1>
+
+<% @curriculums.each do |c| %>
+	<li><%= c.title %></li>
+	<li><%= c.topic %></li>
+	<li><%= c.summary %></li>
+	<li><%= c.syllabus %></li>
+	<li><%= c.timeframe %></li>
+	<li><%= c.created_at %></li>
+	<li><%= c.updated_at %></li><br/>
+	<li><%= link_to "show framework", show_path(c)%></li>
+<% end %>
