@@ -6,13 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 users = User.create([
   {
     first_name: 'Alex',
     last_name: 'Dubelko',
     username: 'Thor',
     email: 'alex@ga.com',
-    password_digest: 'alexeverything',
+    email_confirmation: 'alex@ga.com',
+    password: 'alexeverything',
+    password_confirmation: 'alexeverything',
     phone_number: '310-787-9900',
     privilege: 4
   },
@@ -21,7 +24,9 @@ users = User.create([
     last_name: 'Wundt',
     username: 'wilhemwundt',
     email: 'wilhem@ga.com',
-    password_digest: 'wilhem',
+    email_confirmation: 'wilhem@ga.com',
+    password: 'wilhemalexssd',
+    password_confirmation: 'wilhemalexssd',
     phone_number: '310-787-9999',
     privilege: 3
   },
@@ -30,7 +35,9 @@ users = User.create([
     last_name: 'An',
     username: 'BigBen',
     email: 'bigbenbeeper@gmail.com',
-    password_digest: 'beneverything',
+    email_confirmation: 'bigbenbeeper@gmail.com',
+    password: 'beneverything',
+    password_confirmation: 'beneverything',
     phone_number: '310-787-9988',
     privilege: 2
   },
@@ -39,7 +46,9 @@ users = User.create([
     last_name: 'Wilhem',
     username: 'DanDan',
     email: 'dan@ga.com',
-    password_digest: 'daneverything',
+    email_confirmation: 'dan@ga.com',
+    password: 'daneverything',
+    password_confirmation: 'daneverything',
     phone_number: '310-787-8800',
     privilege: 1
   }
@@ -84,11 +93,13 @@ groups = Group.create([
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
 
+    curriculum: curriculums[0],
+    
     users: [users[1]]
   }
   ]);
 
-UserGroup.all.first.privilege = 3
+# UserGroup.all.first.privilege = 3
 
 # reviews = Review.create([
 #   rating: 5,

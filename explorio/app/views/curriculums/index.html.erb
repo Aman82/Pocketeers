@@ -6,7 +6,7 @@
 	<li><%= c.summary %></li>
 	<li><%= truncate(c.syllabus, length: 55, separator: '') %></li>
 	<li><%= c.timeframe %></li>
-	<li><%= time.c.created_at(:short) %></li>
+	<li><%= c.created_at %></li>
 	<li><%= c.updated_at %></li>
 	<li><%= link_to "show framework", c %></li><br/>
 <% end %>

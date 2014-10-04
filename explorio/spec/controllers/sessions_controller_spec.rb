@@ -23,7 +23,7 @@ RSpec.describe SessionsController, :type => :controller do
     end
   end
 
-    it "should validate user"
+  it "should validate user"
 
   it "should generate a cookie yum yum"
 
