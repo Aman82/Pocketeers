@@ -1,2 +1,26 @@
-<h1>Curriculums#new</h1>
-<p>Find me in app/views/curriculums/new.html.erb</p>
+<h1>Create a Curriculum Here!</h1>
+
+
+
+<div class="large-4 columns"><%= link_to "Go Back NOW!", root_path %></div>
+<div class="large-4 columns">
+<%= form_for @curriculum do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :topic %>
+	<%= f.text_field :topic %>
+
+	<%= f.label :summary %>
+	<%= f.text_area :summary, size: "60x4.5" %>
+
+	<%= f.label :syllabus %>
+	<%= f.text_area :syllabus, size: "60x12" %>
+
+	<%= f.label :timeframe %>
+	<%= f.text_field :timeframe %>
+
+	<%= f.submit :submit  %> 
+<% end %>
+</div>
+<div class="large-4 columns"></div>
