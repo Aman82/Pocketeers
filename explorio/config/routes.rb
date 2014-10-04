@@ -6,6 +6,7 @@ root 'pages#index'
   get 'signin/' => 'sessions#new', as: :sessions
   post 'signin/' => 'sessions#create'
   delete 'signout/' => 'sessions#destroy', as: :signout
+    
 resources :users
 resources :curriculums
 resources :groups
