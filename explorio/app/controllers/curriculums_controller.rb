@@ -1,6 +1,8 @@
 class CurriculumsController < ApplicationController
+respond_to :json
   def index
     @curriculums = Curriculum.all
+    respond_with @curriculums
   end
 
   def show
