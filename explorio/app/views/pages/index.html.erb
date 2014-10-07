@@ -1,65 +1,149 @@
-<div class="row">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0MS3mKku6rDfWhvQcVYfMqVBCfr4sxLw"> 
+</script>
 
+<script>
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see a blank space instead of the map, this
+// is probably because you have denied permission for location sharing.
+
+var map;
+
+function initialize() {
+  var mapOptions = {
+    zoom: 12
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'You are here!'
+      });
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+
+  $.get('/api/groups').then(function(data) {
+    for(var i=0; i < data.length; i++){
+      var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(data[i].location)
+      console.log(url)
+      $.get(url).then(function(data) {
+        var marker = new google.maps.Marker({
+          position: data.results[0].geometry.location,
+          map: map,
+          title: 'Sant Marti'
+        });
+      });
+    }
+  })
+
+  $('#search').click(function(){
+    var address = document.getElementById('address').value;
+    var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address)
+    console.log(url)
+    $.get(url).then(function(data) {
+      map.setCenter(data.results[0].geometry.location)
+    });
+  });
+
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+<div class="row">
   <div class="large-12 columns">
     <h1>Welcome to Explor.io</h1>
+    <input id="address"></input><button id="search" type='submit'>Search</button>
+
   </div>
   <hr />
 </div>
+
+<div id="map-canvas" style="width: 100%; height: 60%"></div>
+
 <div class="row">
   <div class="large-12 columns">
     <div class="panel">
-    <h3>Select the field of search</h3>
-    <div class="row">
-      <div class="large-12 columns">
-        <label>Finnest Search</label>
-        <select>
-          <option value="Location">According to Location</option>
-          <option value="Topic">According to Topic</option>
-          <option value="Title">According to Title</option>
-          <option value="Group">Group</option>
-        </select>
-      </div>
-    </div>
-    <a href="#" class="small round button">Search for it!</a><br/>
-    </div>
-   </div>
-  </div>
-    
- 
-<div class="row">
-    <div class="large-12 columns">
-    
-      <div class="panel">
-        <h4>Get in touch!</h4>
-            
-        <div class="row">
-          <div class="large-9 columns">
-            <p>We'd love to hear from you, you attractive person you.</p>
-          </div>
-          <div class="large-3 columns">
-            <a href="#" class="radius button right">Contact Us</a>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  <footer class="row">
-    <div class="large-12 columns">
-      <hr/>
+      <h3>Select the field of search</h3>
       <div class="row">
-        <div class="large-6 columns">
-          <p>© Copyright. Explorio.</p>
-        </div>
-        <div class="large-6 columns">
-          <ul class="inline-list right">
-            <li><a href="https://www.facebook.com/">Follow on Facebook</a></li>
-            <li><a href="https://twitter.com/login">Twitter</a></li>
-            <li><a href="https://www.linkedin.com/">Linkedin</a></li>
-            <li><a href="https://plus.google.com/">Google+</a></li>
-          </ul>
+        <div class="large-12 columns">
+          <label>Finnest Search</label>
+          <select>
+            <option value="Location">According to Location</option>
+            <option value="Topic">According to Topic</option>
+            <option value="Title">According to Title</option>
+            <option value="Group">Group</option>
+          </select>
         </div>
       </div>
-    </div> 
-  </footer>
+      <a href="#" class="small round button">Search for it!</a><br/>
+    </div>
+  </div>
+</div>
+    
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel">
+      <h4>Get in touch!</h4>
+      <div class="row">
+        <div class="large-9 columns">
+          <p>We'd love to hear from you, you attractive person you.</p>
+        </div>
+        <div class="large-3 columns">
+          <a href="#" class="radius button right">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="row">
+  <div class="large-12 columns">
+    <hr/>
+    <div class="row">
+      <div class="large-6 columns">
+        <p>© Copyright. Explorio.</p>
+      </div>
+      <div class="large-6 columns">
+        <ul class="inline-list right">
+          <li><a href="https://www.facebook.com/">Follow on Facebook</a></li>
+          <li><a href="https://twitter.com/login">Twitter</a></li>
+          <li><a href="https://www.linkedin.com/">Linkedin</a></li>
+          <li><a href="https://plus.google.com/">Google+</a></li>
+        </ul>
+      </div>
+    </div>
+  </div> 
+</footer>
     

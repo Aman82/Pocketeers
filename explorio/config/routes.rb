@@ -12,9 +12,11 @@ resources :curriculums
 resources :groups
 resources :pages
 
+
   scope "api", defaults: {format: "json"} do 
     resources :curriculums, :groups
   end
+
 
   
   # The priority is based upon order of creation: first created -> highest priority.

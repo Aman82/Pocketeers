@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  respond_to :html, :json
 
+respond_to :html, :json
   def index
     @groups = Group.all
     respond_with @groups
