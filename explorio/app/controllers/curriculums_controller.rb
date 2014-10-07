@@ -1,5 +1,5 @@
 class CurriculumsController < ApplicationController
-respond_to :json
+respond_to :html, :json
   def index
     @curriculums = Curriculum.all
     respond_with @curriculums
