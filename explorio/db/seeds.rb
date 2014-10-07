@@ -75,7 +75,7 @@ groups = Group.create([
   { 
     name: 'Fun with Bill',
     topic: "DataMining with Python",
-    location: 'Santa Monica Promanade',
+    location: '1617 Broadway Santa Monica',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
 
@@ -89,7 +89,7 @@ groups = Group.create([
   { 
     name: 'Learn to Lol',
     topic: "Advanced League of Legends Training on Macs",
-    location: '1637 Broadway',
+    location: '1520 2nd Street',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
 
