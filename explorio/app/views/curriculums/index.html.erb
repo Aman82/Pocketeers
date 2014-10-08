@@ -1,12 +1,21 @@
-<h1>Hey everyone look at the courses we offer</h1>
-
-<% @curriculums.each do |c| %>
-	<li><%= c.title %></li>
-	<li><%= c.topic %></li>
-	<li><%= c.summary %></li>
-	<li><%= truncate(c.syllabus, length: 55, separator: '') %></li>
-	<li><%= c.timeframe %></li>
-	<li><%= c.created_at %></li>
-	<li><%= c.updated_at %></li>
-	<li><%= link_to "show framework", c %></li><br/>
-<% end %>
+<div class="row">
+  <div class="large-9 medium-8 columns">
+    <h2>Hey everyone look at the courses we offer:</h2>
+    <!-- Grid Example -->
+    <hr />         
+  <form>
+	  <div class="row">
+	    <div class="large-12 columns">
+      <% @curriculums.each do |c| %>
+		<li><%= c.title %></li>
+		<li><%= c.topic %></li>
+		<li><%= c.summary %></li>
+		<li><%= truncate(c.syllabus, length: 55, separator: '') %></li>
+		<li><%= c.timeframe %></li>
+		<li><%= c.created_at %></li>
+		<li><%= c.updated_at %></li>
+		<li><%= link_to "show framework", c %></li><br/>
+	  <% end %>
+	</div>
+</form>
+</div>  
