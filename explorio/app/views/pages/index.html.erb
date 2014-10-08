@@ -15,26 +15,6 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: 'You are here!'
-      });
-
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
-
   $.get('/api/groups').then(function(data) {
     for(var i=0; i < data.length; i++){
       var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(data[i].location)
@@ -50,18 +30,43 @@ function initialize() {
   })
 
   $('#search').click(function(){
+    $("#map-canvas").show("slow", function(){
+      google.maps.event.trigger(map,"resize")
+      if ($('#address').val() == ""){
 
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+          var infowindow = new google.maps.InfoWindow({
+            map: map,
+            position: pos,
+            content: 'You are here!'
+          });
 
-   $("#map-canvas").show("slow", function(){
-        google.maps.event.trigger(map,"resize")
+          map.setCenter(pos);
+          }, function() {
+            handleNoGeolocation(true);
+          });
+        } else {
+        // Browser doesn't support Geolocation
+          handleNoGeolocation(false);
+        }
+
+      } else {
+
         var address = document.getElementById('address').value;
         var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address)
         console.log(url)
         $.get(url).then(function(data) {
-      map.setCenter(data.results[0].geometry.location)
+          map.setCenter(data.results[0].geometry.location)
+          console.log(data.results[0].geometry.bounds.southwest)
+          var bounds = new google.maps.LatLngBounds(data.results[0].geometry.bounds.southwest, 
+                                          data.results[0].geometry.bounds.northeast);
+map.fitBounds(bounds);
+        });
+      }
     });
-  });
   });
 
 }
