@@ -56,25 +56,66 @@ users = User.create([
 
 curriculums = Curriculum.create([
   {
-    title: 'Learn to Lol',
-    topic: 'League of Legends',
+    title: 'HTML 5 Advanced Topics',
+    topic: 'HTML 5',
     summary: 'we are going to learn about how to maximize your skills on a macbook pro. You will play with no mouse, only a trackpad',
     syllabus:
       'week 0: What is a mac?
       week 1: The art of the trackpad
       week 2: Gaming is a lifestyle
       week 3: Advanced topics on LOL',
+    timeframe: '2 Weeks',
+
+    user: users[1]   #curator of curriculum
+  },
+    {
+    title: 'Trading with Volume & Price',
+    topic: 'Stock Trading',
+    summary: 'we are going to learn about how to maximize your skills on a macbook pro. You will play with no mouse, only a trackpad',
+    syllabus:
+      'week 0: What is a mac?
+      week 1: The art of the trackpad
+      week 2: Gaming is a lifestyle
+      week 3: Advanced topics on LOL',
+    timeframe: '2 Weeks',
+
+    user: users[1]   #curator of curriculum
+  },
+    {
+    title: 'Financial Data Mining with Python',
+    topic: 'FINC Data and Python',
+    summary: 'we are going to learn about how to maximize your skills on a macbook pro. You will play with no mouse, only a trackpad',
+    syllabus:
+      'week 0: What is a mac?
+      week 1: The art of the trackpad
+      week 2: Gaming is a lifestyle
+      week 3: Advanced topics on LOL',
+    timeframe: '3 Weeks',
+
+    user: users[1]   #curator of curriculum
+  },
+  {
+    title: 'Learn RSpec w/ a Master',
+    topic: 'Rspec',
+    summary: 'we are going to learn about how to maximize your skills on a macbook pro. You will play with no mouse, only a trackpad',
+    syllabus:
+    'week 0: What is a mac?
+    week 1: The art of the trackpad
+    week 2: Gaming is a lifestyle
+    week 3: Advanced topics on LOL',
     timeframe: '4 Weeks',
 
     user: users[1]   #curator of curriculum
-  }
+  },
+
+
   ]);
 
 
 groups = Group.create([
   { 
-    name: 'Fun with Bill',
-    topic: "DataMining with Python",
+    name: 'Peter Thiel',
+    topic: "HTML 5 Advanced Topics",
     location: '1617 Broadway Santa Monica',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
@@ -87,8 +128,8 @@ groups = Group.create([
   },
 
   { 
-    name: 'Learn to Lol',
-    topic: "Advanced League of Legends Training on Macs",
+    name: 'Richard Wyckoff',
+    topic: "Stock Trading",
     location: '1520 2nd Street',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),

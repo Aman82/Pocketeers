@@ -1,11 +1,58 @@
+<body class="groups_body">
 
+<div class="row header">
+THIS IS THE HEADER AREA
+</div>
+
+
+<!-- Group Search Bar -->
+<!-- Use ajax for single page search -->
+<div class="row group_search">
+  <div class="row collapse">
+    <div class="large-8 small-9 columns">
+      <input type="text" placeholder="Find Stuff">
+    </div>
+    <div class="large-4 small-3 columns">
+      <a href="#" class="small alert button expand postfix">Search</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+
+
+<div class="large-3 columns sidebar group_content">Table of Contents</div>
 <% @groups.each do |group| %>
+  <div class="large-9 columns group_module">
+
   <li>
-    <%= group.name %>
-    <strong><%= group.curriculum.title %></strong>
-    <%= group.location %>
-    <%= group.start_date %>
+  	<div class="large-6 columns">
+    <strong><%= group.curriculum.title %></strong><br/>
+    <!-- <%= group.curriculum.topic %><br/> -->
+    <!-- <div class="row"> -->
+    <%= group.location %><br />
+    <strong>Mentor: </strong><%= group.name %>
+
+    <!-- </div> -->
+    </div>
+    <div class="large-6 columns">
+        <%= group.start_date %>
     <%= group.end_date %>
+    <%= group.curriculum.timeframe %>
     <%= link_to 'Show page', group %>
-  </li><br/>
+    </div>
+  </li>
+
+</div>
 <% end %>
+	<!--     <div class="large-4 small-3 columns">
+	      <a href="#" class="small alert button expand">View Avaible Curriculums</a>
+	    </div> -->
+</div>
+
+<div class="row footer"></div>
+
+</body>
+
+
