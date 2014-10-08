@@ -81,39 +81,56 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
 
-<div class="row">
-  <div class="large-12 columns">
-    <h1>Welcome to Explor.io</h1>
-    <input id="address"></input><button id="search" type='submit'>Search</button>
-
-  </div>
-  <hr />
+<div class="banner">
+  <h1 id="logo">Welcome to Explor.io</h1>
 </div>
 
-<div id="map-canvas" style="width: 100%; height: 60%"></div>
+<!-- Search Button -->
+
+<div id="search_form" class="row">
+  <div class="large-12 columns">
+    
+
+    <div class="row collapse">
+
+    <div class="large-8 small-9 columns">
+      <input id="address" type="text" placeholder="Find Stuff">
+    </div>
+
+    <div class="large-4 small-3 columns">
+      <button id="search" class=" postfix alert button">Search Location</button>
+  </div>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+<!-- Map Canvas Area -->
+
+<div  id="map-canvas" style="width: 67.5%; height: 40%; margin: 0 auto;">
+</div>
+
+
+<!-- Button Search Area -->
 
 <div class="row">
   <div class="large-12 columns">
     <div class="panel">
-      <h3>Select the field of search</h3>
-      <div class="row">
-        <div class="large-12 columns">
-          <label>Finnest Search</label>
-          <select>
-            <option value="Location">According to Location</option>
-            <option value="Topic">According to Topic</option>
-            <option value="Title">According to Title</option>
-            <option value="Group">Group</option>
-          </select>
-        </div>
-      </div>
-      <a href="#" class="small round button">Search for it!</a><br/>
+      <h3>Learn Something new, with people and you!!!</h3>
+      <a href="#" class="small round button">See Curriculums</a>
     </div>
   </div>
 </div>
+
+
     
 <div class="row">
-  <div class="large-12 columns">
+
+  <div class="large-4 columns">
     <div class="panel">
       <h4>Get in touch!</h4>
       <div class="row">
@@ -126,6 +143,35 @@ google.maps.event.addDomListener(window, 'load', initialize);
       </div>
     </div>
   </div>
+
+    <div class="large-4 columns">
+    <div class="panel">
+      <h4>Get in touch!</h4>
+      <div class="row">
+        <div class="large-9 columns">
+          <p>We'd love to hear from you, you attractive person you.</p>
+        </div>
+        <div class="large-3 columns">
+          <a href="#" class="radius button right">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="large-4 columns">
+    <div class="panel">
+      <h4>Get in touch!</h4>
+      <div class="row">
+        <div class="large-9 columns">
+          <p>We'd love to hear from you, you attractive person you.</p>
+        </div>
+        <div class="large-3 columns">
+          <a href="#" class="radius button right">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <footer class="row">

@@ -15,3 +15,51 @@
  *= require foundation_and_overrides
 
  */
+
+ @import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+ body {
+ 	background-color: #ECF0F1;
+ 	font-family: 'Pacifico'
+ }
+
+ .top-bar {
+ 	background: RGBA(48, 56, 64, 1);
+ }
+
+ #logo {
+ 	color: RGB(232, 86, 113);
+ 	font-family: 'Pacifico', cursive;
+ 	text-align: center;
+ 	color: white;
+ 	font-size: 85px;
+ 	margin: 0 auto;
+ 	padding: 10px 0 10px 0;
+ 	height: 90px;
+	text-shadow: 2px 2px 11px #303840;
+	padding-top: 130px;
+ }
+
+  .banner {
+	background-image: image-url('bike.jpg');
+	background-position: 0px -220px, center;
+	background-size: cover;
+	background-attachment: fixed;
+	// background-color: RGBA(86, 208, 179, 1);
+	// opacity: 0.7;
+	height: 500px;
+	width: 100%;
+	z-index: 1000;
+ }
+
+
+ #search_form {
+ 	padding-top: 20px;
+ }
+
+ #map-canvas {
+ 	// border-radius: 3px;	
+ 	border: 1px solid #D8D8D8;
+ }
+
+
