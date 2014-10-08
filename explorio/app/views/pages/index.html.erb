@@ -50,12 +50,18 @@ function initialize() {
   })
 
   $('#search').click(function(){
-    var address = document.getElementById('address').value;
-    var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address)
-    console.log(url)
-    $.get(url).then(function(data) {
+
+
+
+   $("#map-canvas").show("slow", function(){
+        google.maps.event.trigger(map,"resize")
+        var address = document.getElementById('address').value;
+        var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address)
+        console.log(url)
+        $.get(url).then(function(data) {
       map.setCenter(data.results[0].geometry.location)
     });
+  });
   });
 
 }
@@ -82,7 +88,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 <div class="banner">
-  <h1 id="logo">Welcome to Explor.io</h1>
+  <h1 id="logo">Welcome to Papaya</h1>
 </div>
 
 <!-- Search Button -->
@@ -94,7 +100,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div class="row collapse">
 
     <div class="large-8 small-9 columns">
-      <input id="address" type="text" placeholder="Find Stuff">
+      <input id="address" type="text" placeholder="Find Groups">
     </div>
 
     <div class="large-4 small-3 columns">
@@ -111,7 +117,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <!-- Map Canvas Area -->
 
-<div  id="map-canvas" style="width: 67.5%; height: 40%; margin: 0 auto;">
+<div  id="map-canvas">
 </div>
 
 
@@ -120,8 +126,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div class="row">
   <div class="large-12 columns">
     <div class="panel">
-      <h3>Learn Something new, with people and you!!!</h3>
-      <a href="#" class="small round button">See Curriculums</a>
+      <h3>Learn Something new, with people and you!!!
+      <%= link_to "See Curriculums", curriculums_path, class:   "small round button" %></h3>
     </div>
   </div>
 </div>
@@ -130,47 +136,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
     
 <div class="row">
 
+<% @groups.each do |group| %>
+  
   <div class="large-4 columns">
-    <div class="panel">
-      <h4>Get in touch!</h4>
+    <div class="panel"  style="height: 200px;">
+      <h4><%= group.curriculum.title %> </h4>
       <div class="row">
         <div class="large-9 columns">
-          <p>We'd love to hear from you, you attractive person you.</p>
-        </div>
-        <div class="large-3 columns">
-          <a href="#" class="radius button right">Contact Us</a>
+          <p><%= truncate(group.curriculum.summary, length: 55, separator: '') %> </p>
+          <button class="tiny button">Explore</button>
         </div>
       </div>
     </div>
   </div>
 
-    <div class="large-4 columns">
-    <div class="panel">
-      <h4>Get in touch!</h4>
-      <div class="row">
-        <div class="large-9 columns">
-          <p>We'd love to hear from you, you attractive person you.</p>
-        </div>
-        <div class="large-3 columns">
-          <a href="#" class="radius button right">Contact Us</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 
-    <div class="large-4 columns">
-    <div class="panel">
-      <h4>Get in touch!</h4>
-      <div class="row">
-        <div class="large-9 columns">
-          <p>We'd love to hear from you, you attractive person you.</p>
-        </div>
-        <div class="large-3 columns">
-          <a href="#" class="radius button right">Contact Us</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 

@@ -20,7 +20,7 @@
 
  body {
  	background-color: #ECF0F1;
- 	font-family: 'Pacifico'
+ 	font-family: helvetica;
  }
 
  .top-bar {
@@ -42,8 +42,8 @@
 
   .banner {
 	background-image: image-url('bike.jpg');
-	background-position: 0px -220px, center;
-	background-size: cover;
+	// background-position: 0px -220px, center;
+	background-size: 100%;
 	background-attachment: fixed;
 	// background-color: RGBA(86, 208, 179, 1);
 	// opacity: 0.7;
@@ -60,6 +60,10 @@
  #map-canvas {
  	// border-radius: 3px;	
  	border: 1px solid #D8D8D8;
+ 	display: none;
+ 	width: 67.5%; 
+ 	height: 40%; 
+ 	margin: 0 auto;
  }
 
 
