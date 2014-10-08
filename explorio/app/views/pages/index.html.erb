@@ -2,10 +2,6 @@
 </script>
 
 <script>
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see a blank space instead of the map, this
-// is probably because you have denied permission for location sharing.
-
 var map;
 
 function initialize() {
@@ -19,13 +15,25 @@ function initialize() {
     for(var i=0; i < data.length; i++){
       var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(data[i].location)
       console.log(url)
-      $.get(url).then(function(data) {
-        var marker = new google.maps.Marker({
-          position: data.results[0].geometry.location,
+      $.get(url).then((function(i) {
+      
+        return function(data2) {
+
+          var infowindow = new google.maps.InfoWindow({
+            content: data[i].name
+          });
+
+          var marker = new google.maps.Marker({
+          position: data2.results[0].geometry.location,
           map: map,
           title: 'Sant Marti'
-        });
-      });
+          });
+          
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+          });
+        };
+      })(i));
     }
   })
 
@@ -49,7 +57,6 @@ function initialize() {
             handleNoGeolocation(true);
           });
         } else {
-        // Browser doesn't support Geolocation
           handleNoGeolocation(false);
         }
 
@@ -60,10 +67,12 @@ function initialize() {
         console.log(url)
         $.get(url).then(function(data) {
           map.setCenter(data.results[0].geometry.location)
-          console.log(data.results[0].geometry.bounds.southwest)
-          var bounds = new google.maps.LatLngBounds(data.results[0].geometry.bounds.southwest, 
-                                          data.results[0].geometry.bounds.northeast);
-map.fitBounds(bounds);
+          console.log(data.results[0].geometry.viewport.southwest)
+          var southwest = new google.maps.LatLng(data.results[0].geometry.viewport.southwest.lat,data.results[0].geometry.viewport.southwest.lng);
+          var northeast = new google.maps.LatLng(data.results[0].geometry.viewport.northeast.lat,data.results[0].geometry.viewport.northeast.lng);
+          console.log(southwest)
+          var bounds = new google.maps.LatLngBounds(southwest,northeast);
+          map.fitBounds(bounds);
         });
       }
     });
