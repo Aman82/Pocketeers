@@ -1,3 +1,55 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.groups_body {
+	margin: 0px;
+	padding: 0px;
+// possibly replace all fonts with this font
+	font-family: 'Maven Pro', sans-serif;
+}
+
+.header {
+	height: 50px;
+	// border: 1px solid black;
+}
+
+.group_search {
+	// border-bottom: 1px solid gray;
+	width: 1000px; 
+	box-shadow: 0px 10px 23px -18px rgba(0,0,0,0.95);
+	margin-bottom: 15px;
+}
+
+.sidebar {
+	height: 500px;
+	border: 1px solid RGBA(246, 207, 207, 1);
+	// background: white;
+}
+
+.group_module {
+	border-bottom: 1px solid RGBA(176, 171, 169, 1);
+	border-right: 1px solid rgb(222, 221, 219);
+	background: white;
+	padding: 10px;
+	margin: 5px 0 5px 0;
+	height: 100px;
+	border-radius: 0px 6px 6px 0px;
+	box-shadow: 10px 10px 23px -23px rgba(0,0,0,0.75);
+	overflow: scroll;
+}
+
+// .group_module {
+// 	border: 1px solid black;
+// 	background: white;
+// }
+
+.group_module li {
+	list-style: none;
+}
+
+.footer {
+	// background: RGBA(38, 38, 38, 1);
+	height: 100px;
+}
+
