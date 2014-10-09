@@ -20,13 +20,13 @@ function initialize() {
         return function(data2) {
 
           var infowindow = new google.maps.InfoWindow({
-            content: data[i].name
+            content: data[i].topic
           });
 
           var marker = new google.maps.Marker({
           position: data2.results[0].geometry.location,
           map: map,
-          title: 'Sant Marti'
+          title: data[i].topic
           });
           
           google.maps.event.addListener(marker, 'click', function() {
@@ -45,18 +45,18 @@ function initialize() {
         if(navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-          var infowindow = new google.maps.InfoWindow({
+          var marker = new google.maps.Marker({
             map: map,
             position: pos,
-            content: 'You are here!'
+            title: 'You are here!',
+            icon: 'assets/smiley.png'
           });
 
           map.setCenter(pos);
           }, function() {
             handleNoGeolocation(true);
           });
-        } else {
+        } else {  
           handleNoGeolocation(false);
         }
 
