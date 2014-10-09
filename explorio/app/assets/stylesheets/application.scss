@@ -16,13 +16,13 @@
 
  */
 
- @import url(http://fonts.googleapis.com/css?family=Pacifico);
- @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700|Maven+Pro:400,500,700,900|Pontano+Sans);
+ @import url(https://fonts.googleapis.com/css?family=Pacifico);
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700|Maven+Pro:400,500,700,900|Pontano+Sans);
 
  body {
  	background-color: RGBA(238, 237, 233, 1);
- 	font-family: helvetica;
  }
+
 
  .top-bar {
  	background: RGBA(48, 56, 64, 1);
@@ -58,12 +58,17 @@
  	padding-top: 20px;
  }
 
+/* to avoid squashed zoom control */
+ img {
+ 	max-width: none;
+ }
+
  #map-canvas {
  	// border-radius: 3px;	
  	border: 1px solid #D8D8D8;
  	display: none;
  	width: 67.5%; 
- 	height: 40%; 
+ 	height: 60%; 
  	margin: 0 auto;
  }
 
