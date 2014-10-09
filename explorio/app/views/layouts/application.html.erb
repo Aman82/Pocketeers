@@ -26,15 +26,41 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <li><%= link_to "Checkout Groups", groups_path %></li>
-      <li class="active"><%= link_to "Sign in", signin_path %></li>
+      <li class="active">
+      <% if current_user %>
+        <%= link_to "Log Out", signout_path, method: 'delete'  %>
+      <% else %>
+      <a href="#" data-reveal-id="myModal">Sign in</a>
+
+        <div id="myModal" class="reveal-modal" data-reveal>
+          <%= form_for(:session, url: sessions_path) do |f| %>
+            <%= f.label :email %> 
+            <%= f.text_field :email %><br>
+            <%= f.label :password %> 
+            <%= f.password_field :password %>
+            <%= f.submit "Sign In!" %><%= link_to "Sign up", 'users/new' %>
+          <% end %>
+        </div>
+      </li>
+      <% end %>
       <li class="has-dropdown">
-        <a href="#">Join Now</a>
+        <a>
+        <% if current_user %>
+          <%= @current_user.username %>
+        <% else %>
+          Join Now
+        <% end %>
+          </a>
         <ul class="dropdown">
           
-          <li class="active"><%= link_to "Sign up", 'users/new' %></li>
+          <li class="active">
+          <% if current_user %>
+            <%= link_to "Profile", @current_user %>
+          <% else %>
+            <%= link_to "Sign up", 'users/new' %></li>
+          <% end %>
           <li class="active"><%= link_to "Curriculums", curriculums_path %></li>
           <li><a href="#">About Us</a></li>
-          <li><%= link_to "Log Out", signout_path, method: 'delete'  %></li>
         </ul>
       </li>
     </ul>
