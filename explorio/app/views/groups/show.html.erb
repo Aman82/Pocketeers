@@ -152,13 +152,19 @@
 
       <div class="large-4 medium-4 columns">   
         <%= form_for [@group, @user_group] do |f| %>
-          <% f.hidden_field :user_id, :value => current_user.id %>   
-          <% f.hidden_field :group_id, :value => @group.id %>      
+          <%= f.hidden_field :user_id, :value => current_user.id %>   
+          <%= f.hidden_field :group_id, :value => @group.id %>     
           <%= f.submit "Join Group", class: "medium success button" %><br/>
         <% end %>
 				<div class="panel">
         	<h3>SIGN UP TODAY!</h3>
         	<a href="http://foundation.zurb.com/docs/">Chat Box</a>          
+        </div>
+        <div class="panel">
+          <h3>Members</h3>
+          <% @group.users.each do |user| %>
+            <li><%= user.username %></li>
+          <% end %>        
         </div>
       </div>
     </div>
