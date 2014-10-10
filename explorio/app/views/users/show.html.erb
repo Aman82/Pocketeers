@@ -1,5 +1,5 @@
 <h1> <%= @user.first_name %> <%= @user.last_name %> |  <%= @user.username %> </h1>
 <p>
-	Your Password: <%= @user.password_digest %> <br/>
+	<%= image_tag @user.avatar.url(:thumb) %> <br/>
 	Your Privlege Level: <%= @user.privilege %>
 </p>

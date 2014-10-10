@@ -8,6 +8,7 @@ respond_to :html, :json
 
   def show
     @group = Group.find(params[:id])
+    @user_group = UserGroup.new
   end
 
   def new
