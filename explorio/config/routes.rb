@@ -9,7 +9,9 @@ root 'pages#index'
     
 resources :users
 resources :curriculums
-resources :groups
+resources :groups do
+  resources :user_groups
+end
 resources :pages
 
 
