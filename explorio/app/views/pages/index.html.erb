@@ -3,32 +3,26 @@
 
 <script>
 var map;
-
 function initialize() {
   var mapOptions = {
     zoom: 12
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-
   $.get('/api/groups').then(function(data) {
     for(var i=0; i < data.length; i++){
       var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(data[i].location)
       console.log(url)
       $.get(url).then((function(i) {
-      
         return function(data2) {
-
           var infowindow = new google.maps.InfoWindow({
             content: data[i].topic
           });
-
           var marker = new google.maps.Marker({
           position: data2.results[0].geometry.location,
           map: map,
           title: data[i].topic
           });
-          
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
           });
@@ -41,7 +35,6 @@ function initialize() {
     $("#map-canvas").show("slow", function(){
       google.maps.event.trigger(map,"resize")
       if ($('#address').val() == ""){
-
         if(navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -51,7 +44,6 @@ function initialize() {
             title: 'You are here!',
             icon: 'assets/smiley.png'
           });
-
           map.setCenter(pos);
           }, function() {
             handleNoGeolocation(true);
@@ -59,9 +51,7 @@ function initialize() {
         } else {  
           handleNoGeolocation(false);
         }
-
       } else {
-
         var address = document.getElementById('address').value;
         var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address)
         console.log(url)
@@ -77,7 +67,6 @@ function initialize() {
       }
     });
   });
-
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -86,54 +75,39 @@ function handleNoGeolocation(errorFlag) {
   } else {
     var content = 'Error: Your browser doesn\'t support geolocation.';
   }
-
   var options = {
     map: map,
     position: new google.maps.LatLng(60, 105),
     content: content
   };
-
   var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
-}
-
+  }
 google.maps.event.addDomListener(window, 'load', initialize);
-
 </script>
 
 <div class="banner">
-  <h1 id="logo">Welcome to Papaya</h1>
+  <h1 id="logo">Welcome to Explorio</h1>
 </div>
 
 <!-- Search Button -->
 
 <div id="search_form" class="row">
   <div class="large-12 columns">
-    
-
     <div class="row collapse">
-
     <div class="large-8 small-9 columns">
       <input id="address" type="text" placeholder="Find Groups">
     </div>
-
     <div class="large-4 small-3 columns">
       <button id="search" class=" postfix alert button">Search Location</button>
   </div>
-
-</div>
-
-
-
 </div>
 </div>
-
+</div>
 
 <!-- Map Canvas Area -->
-
 <div  id="map-canvas">
 </div>
-
 
 <!-- Button Search Area -->
 
@@ -145,13 +119,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </div>
   </div>
 </div>
-
-
-    
+   
 <div class="row">
-
 <% @groups.each do |group| %>
-  
   <div class="large-4 columns">
     <div class="panel"  style="height: 200px;">
       <h4><%= group.curriculum.title %> </h4>
@@ -163,10 +133,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
       </div>
     </div>
   </div>
-
   <% end %>
-
-
 </div>
 
 <footer class="row">
