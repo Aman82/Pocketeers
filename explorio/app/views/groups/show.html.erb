@@ -150,12 +150,26 @@
 				</form>
       </div>     
 
-      <div class="large-4 medium-4 columns">   
+      <div class="large-4 medium-4 columns">
+      <% if current_user %>
         <%= form_for [@group, @user_group] do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>   
           <%= f.hidden_field :group_id, :value => @group.id %>     
           <%= f.submit "Join Group", class: "medium success button" %><br/>
         <% end %>
+      <% else %>
+        <button class="medium success button" data-reveal-id="myModal">Login to Join!</button>
+
+        <div id="myModal" class="reveal-modal" data-reveal>
+          <%= form_for(:session, url: sessions_path) do |f| %>
+            <%= f.label :email %> 
+            <%= f.text_field :email %><br>
+            <%= f.label :password %> 
+            <%= f.password_field :password %>
+            <%= f.submit "Sign In!" %><%= link_to "Sign up", 'users/new' %>
+          <% end %>
+        </div>
+      <% end %>
 				<div class="panel">
         	<h3>SIGN UP TODAY!</h3>
         	<a href="http://foundation.zurb.com/docs/">Chat Box</a>          
