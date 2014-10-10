@@ -3,6 +3,9 @@
 .
 </div>
 <div class="large-4 columns">
+<% @user.errors.messages.each do |key,value| %>
+	<li><%= key %>: <%= value.join(", ") %>
+<% end %>
 <h1>Sign Up!</h1>
 <%= form_for @user do |f| %>
 
@@ -26,6 +29,8 @@
 
 	<%= f.label :password_confirmation %>
 	<%= f.password_field :password_confirmation %>
+
+	<%= f.file_field :avatar %>
 
 	<%= f.submit "Sign Me Up!" %> 
 <% end %>
