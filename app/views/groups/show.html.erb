@@ -32,6 +32,7 @@
 	    	</div>
 	        	<div class="large-4 medium-4 columns">
               <p><%= @group.name %> </p>
+              <p>Mentor: <%= @group.users[i].first_name + @group.users[i].last_name %> </p>
 	        		<p><%= @group.location %> </p>
 	        	</div>
 	        	<div class="large-4 medium-4 columns">
@@ -159,16 +160,6 @@
         <% end %>
       <% else %>
         <button class="medium success button" data-reveal-id="myModal">Login to Join!</button>
-
-        <div id="myModal" class="reveal-modal" data-reveal>
-          <%= form_for(:session, url: sessions_path) do |f| %>
-            <%= f.label :email %> 
-            <%= f.text_field :email %><br>
-            <%= f.label :password %> 
-            <%= f.password_field :password %>
-            <%= f.submit "Sign In!" %><%= link_to "Sign up", 'users/new' %>
-          <% end %>
-        </div>
       <% end %>
 				<div class="panel">
         	<h3>SIGN UP TODAY!</h3>
