@@ -1,73 +1,71 @@
 <script>
-  $(document).on('ready page:change', function(){
+  $(document).on('ready', function(){
     $('#search_groups').on('keyup', function () {
       $('.group_module').hide().filter(function(){
-        return $(this).attr('id').indexOf($('#search_groups').val().toLowerCase()) != -1;
+        var search_value = $('#search_groups').val().toLowerCase()
+        return $(this).attr('id').indexOf(search_value) != -1;
       }).show()
     });
   });
 </script>
 
 <div class="groups_body">
+    <div class="row header">
+        THIS IS THE HEADER AREA
+    </div><!-- Group Search Bar -->
+    <!-- Use ajax for single page search -->
 
-  <div class="row header">
-    THIS IS THE HEADER AREA
-  </div>
+    <div class="row group_search">
+        <div class="row collapse">
+            <div class="large-8 small-9 columns">
+                <input id="search_groups" placeholder="Find Stuff" type=
+                "text">
+            </div>
 
-
-  <!-- Group Search Bar -->
-  <!-- Use ajax for single page search -->
-  <div class="row group_search">
-    <div class="row collapse">
-      <div class="large-8 small-9 columns">
-        <input type="text" id="search_groups" placeholder="Find Stuff">
-      </div>
-      <div class="large-4 small-3 columns">
-        <a href="#" class="small alert button expand postfix">Search</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-
-
-
-    <div class="large-3 columns sidebar group_content" id='groups'>Table of Contents</div>
-    <% @groups.each do |group| %>
-    <div class="large-9 columns group_module" id='<%= group.name.downcase %>'>
-
-      <li>
-       <div class="large-6 columns">
-        <strong><%= group.curriculum.title %></strong><br/>
-        <!-- <%= group.curriculum.topic %><br/> -->
-        <!-- <div class="row"> -->
-        <%= group.location %><br />
-        <strong>Mentor: </strong><%= group.name %>
-
-        <!-- </div> -->
-      </div>
-      <div class="large-6 columns">
-        <%= group.start_date %>
-        <%= group.end_date %>
-        <%= group.curriculum.timeframe %>
-        <%= link_to 'Show page', group %>
-      </div>
-    </li>
-    <div class="large-6 columns">
-      INFORMATION IN HERE
+            <div class="large-4 small-3 columns">
+                <a class="small alert button expand postfix" href=
+                "#">Search</a>
+            </div>
+        </div>
     </div>
 
-  </div>
-  <% end %>
-  <div class="large-4 small-3 columns">
-   <a href="#" class="tiny button expand">Add New Group +</a>
- </div>
-</div>
+    <div class="row">
+        <div class="large-3 columns sidebar group_content" id='groups'>
+            Table of Contents
+        </div><% @groups.each do |group| %>
 
+        <div class="large-9 columns group_module" id=
+        '<%= group.curriculum.title.downcase + " " + group.name.downcase + " " + group.location.downcase %>'>
+        <ul>
+            <li>
+                <div class="large-6 columns">
+                    <strong><%= group.curriculum.title %></strong><br>
+                    <!-- <%= group.curriculum.topic %><br/> -->
+                     <!-- <div class="row"> -->
+                     <%= group.location %><br>
+                    <strong>Mentor:</strong> <%= group.name %> 
+                    <!-- </div> -->
+                </div>
 
+                <div class="large-6 columns">
+                    <%= group.start_date %><%= group.end_date %><%= group.curriculum.timeframe %><%= link_to 'Show page', group %>
+                </div>
+            </li>
 
-<div class="row footer"></div>
+            <li style="list-style: none; display: inline">
+                <div class="large-6 columns">
+                    INFORMATION IN HERE
+                </div>
+            </li>
+        </ul>
+        </div><% end %>
 
+        <div class="large-4 small-3 columns">
+            <a class="tiny button expand" href="#">Add New Group +</a>
+        </div>
+    </div>
+
+    <div class="row footer"></div>
 </div>
 
 

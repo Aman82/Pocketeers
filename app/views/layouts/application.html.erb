@@ -1,82 +1,90 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
+    
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-  </head>
-
-  
+</head>
 
 <body>
     <div class="fixed">
-    <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to "Explor.io", root_path %></a></h1>
-      </li>
+        <nav class="top-bar" data-topbar="">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><%= link_to "Explor.io", root_path %></h1>
+                </li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
+                <li class="toggle-topbar menu-icon">
+                    <a href="#"><span>Menu</span></a>
+                </li>
+            </ul>
 
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li><%= link_to "Checkout Groups", groups_path %></li>
-        <li class="active">
-        <% if current_user %>
-          <%= link_to "Log Out", signout_path, method: 'delete'  %>
-        <% else %>
-        <a href="#" data-reveal-id="myModal">Sign in</a>
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
 
-          <div id="myModal" class="reveal-modal" data-reveal>
-            <%= form_for(:session, url: sessions_path) do |f| %>
-              <%= f.label :email %> 
-              <%= f.text_field :email %><br>
-              <%= f.label :password %> 
-              <%= f.password_field :password %>
-              <%= f.submit "Sign In!" %><%= link_to "Sign up", '/users/new' %>
-            <% end %>
-          </div>
-        </li>
-        <% end %>
-        <li class="has-dropdown">
-          <a>
-          <% if current_user %>
-            <%= @current_user.username %>
-          <% else %>
-            Join Now
-          <% end %>
-            </a>
-          <ul class="dropdown">
-            
-            <li class="active">
-            <% if current_user %>
-              <%= link_to "Profile", @current_user %>
-            <% else %>
-              <%= link_to "Sign up", 'users/new' %></li>
-            <% end %>
-            <li class="active"><%= link_to "Curriculums", curriculums_path %></li>
-            <li><a href="#">About Us</a></li>
-          </ul>
-        </li>
-      </ul>
+                <ul class="right">
+                    <% if current_user %>
 
-      <!-- Left Nav Section -->
-      <ul class="left">
-        <li><a href="#">How it Works</a></li>
-      </ul>
-    </section>
-  </nav>
+                    <li class="active">
+                    <%= link_to @current_user.username, @current_user %></li>
 
-    </div>
-    <%= yield %>
-  </body>
+                    <li class="divider"></li>
+
+                    <li class="active">
+                    <%= link_to "Log Out", signout_path, method: 'delete'  %></li>
+                    
+                    <% else %>
+
+                    <li class="active">
+                    <%= link_to "Sign up", '/users/new' %></li>
+
+                    <li class="divider"></li>
+
+                    <li class="active">
+                        <a data-reveal-id="myModal" href="#">Sign in</a>
+
+                        <div class="reveal-modal" data-reveal="" id="myModal">
+                            <%= form_for(:session, url: sessions_path) do |f| %><%= f.label :email %><%= f.text_field :email %><br>
+
+                            <%= f.label :password %>
+                            <%= f.password_field :password %>
+                            <%= f.submit "Sign In!" %><%= link_to "Sign up", '/users/new' %>
+                            <% end %>
+                        </div>
+                    </li><% end %>
+
+                    <li class="has-dropdown">
+                        <a>#Explore</a>
+
+                        <ul class="dropdown">
+                            <li class="active">
+                            <%= link_to "Groups", groups_path %></li>
+
+                            <li class="active">
+                            <%= link_to "Curriculums", curriculums_path %></li>
+
+                            <li>
+                                <a href="#">About Us</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- Left Nav Section -->
+
+                <ul class="left">
+                    <li>
+                        <a href="#">How it Works</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </div><%= yield %>
+</body>
 </html>
