@@ -7,76 +7,76 @@
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
     <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <div class="fixed">
-  <nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to "Explor.io", root_path %></a></h1>
-    </li>
+  
 
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li><%= link_to "Checkout Groups", groups_path %></li>
-      <li class="active">
-      <% if current_user %>
-        <%= link_to "Log Out", signout_path, method: 'delete'  %>
-      <% else %>
-      <a href="#" data-reveal-id="myModal">Sign in</a>
-
-        <div id="myModal" class="reveal-modal" data-reveal>
-          <%= form_for(:session, url: sessions_path) do |f| %>
-            <%= f.label :email %> 
-            <%= f.text_field :email %><br>
-            <%= f.label :password %> 
-            <%= f.password_field :password %>
-            <%= f.submit "Sign In!" %><%= link_to "Sign up", '/users/new' %>
-          <% end %>
-        </div>
+<body>
+    <div class="fixed">
+    <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to "Explor.io", root_path %></a></h1>
       </li>
-      <% end %>
-      <li class="has-dropdown">
-        <a>
+
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li><%= link_to "Checkout Groups", groups_path %></li>
+        <li class="active">
         <% if current_user %>
-          <%= @current_user.username %>
+          <%= link_to "Log Out", signout_path, method: 'delete'  %>
         <% else %>
-          Join Now
+        <a href="#" data-reveal-id="myModal">Sign in</a>
+
+          <div id="myModal" class="reveal-modal" data-reveal>
+            <%= form_for(:session, url: sessions_path) do |f| %>
+              <%= f.label :email %> 
+              <%= f.text_field :email %><br>
+              <%= f.label :password %> 
+              <%= f.password_field :password %>
+              <%= f.submit "Sign In!" %><%= link_to "Sign up", '/users/new' %>
+            <% end %>
+          </div>
+        </li>
         <% end %>
-          </a>
-        <ul class="dropdown">
-          
-          <li class="active">
+        <li class="has-dropdown">
+          <a>
           <% if current_user %>
-            <%= link_to "Profile", @current_user %>
+            <%= @current_user.username %>
           <% else %>
-            <%= link_to "Sign up", 'users/new' %></li>
+            Join Now
           <% end %>
-          <li class="active"><%= link_to "Curriculums", curriculums_path %></li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-      </li>
-    </ul>
+            </a>
+          <ul class="dropdown">
+            
+            <li class="active">
+            <% if current_user %>
+              <%= link_to "Profile", @current_user %>
+            <% else %>
+              <%= link_to "Sign up", 'users/new' %></li>
+            <% end %>
+            <li class="active"><%= link_to "Curriculums", curriculums_path %></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </li>
+      </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><a href="#">How it Works</a></li>
-    </ul>
-  </section>
-</nav>
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><a href="#">How it Works</a></li>
+      </ul>
+    </section>
+  </nav>
 
-</div>
-
-  <body>
-
+    </div>
     <%= yield %>
-    <%= javascript_include_tag "application" %>
   </body>
 </html>
