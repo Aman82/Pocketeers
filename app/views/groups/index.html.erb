@@ -30,11 +30,33 @@
     </div>
 
     <div class="row">
-        <div class="large-3 columns sidebar group_content" id='groups'>
-            Table of Contents
-        </div><% @groups.each do |group| %>
+    <div class="icon-bar five-up">
+  <a class="item">
+    <img src="../assets/img/images/fi-home.svg" >
+    <label>Programming</label>
+  </a>
+  <a class="item">
+    <img src="../assets/img/images/fi-bookmark.svg" >
+    <label>Capital Markets</label>
+  </a>
+  <a class="item">
+    <img src="../assets/img/images/fi-info.svg" >
+    <label>Poetry</label>
+  </a>
+  <a class="item">
+    <img src="../assets/img/images/fi-mail.svg" >
+    <label>Mathmatics</label>
+  </a>
+  <a class="item">
+    <img src="../assets/img/images/fi-like.svg" >
+    <label>Biochemistry</label>
+  </a>
+</div>
 
-        <div class="large-9 columns group_module" id=
+
+        <% @groups.each do |group| %>
+
+        <div class="large-12 columns group_module" id=
         '<%= group.curriculum.title.downcase + " " + group.name.downcase + " " + group.location.downcase %>'>
         <ul>
             <li>
