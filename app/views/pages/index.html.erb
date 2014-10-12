@@ -16,20 +16,43 @@ function initialize() {
       $.get(url).then((function(i) {
         return function(data2) {
           var infowindow = new google.maps.InfoWindow({
-            content: data[i].topic
+            content: '<div class="infowindow">' + data[i].topic + '</div>' + '<div class="infowindow">' + data[i].name + '</div>'
           });
           var marker = new google.maps.Marker({
           position: data2.results[0].geometry.location,
           map: map,
           title: data[i].topic
           });
-          google.maps.event.addListener(marker, 'click', function() {
+          google.maps.event.addListener(marker, 'mouseover', function() {
             infowindow.open(map,marker);
+          });
+          google.maps.event.addListener(marker, 'mouseout', function() {
+            infowindow.close(map,marker);
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            window.location.href = "/groups/" + data[i].id;
           });
         };
       })(i));
     }
   })
+
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var marker = new google.maps.Marker({
+      map: map,
+      position: pos,
+      title: 'You are here!',
+      icon: 'assets/smiley.png'
+    });
+    map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {  
+    handleNoGeolocation(false);
+  }
 
   $('#search').click(function(e){
     e.preventDefault();
@@ -39,12 +62,6 @@ function initialize() {
         if(navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-          var marker = new google.maps.Marker({
-            map: map,
-            position: pos,
-            title: 'You are here!',
-            icon: 'assets/smiley.png'
-          });
           map.setCenter(pos);
           }, function() {
             handleNoGeolocation(true);
@@ -139,7 +156,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <div class="row">
         <div class="large-9 columns">
           <p><%= truncate(group.curriculum.summary, length: 55, separator: '') %> </p>
-          <button class="tiny button">Explore</button>
+          <%= link_to "Explore", group, class: "tiny button" %>
         </div>
       </div>
     </div>
