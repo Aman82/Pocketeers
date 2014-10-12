@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
 		if user && user.authenticate(params[:session][:password])
 			log_in(user)
-			redirect_to root_path
+			redirect_to root_path, notice: 'Successfully Logged In'
 		else
 			flash[:error] ||= 'Password incorrect.'
 			render 'new'

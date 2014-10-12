@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
   @user = User.new(params.require(:user).permit(:username, :first_name, :last_name, :email, :email_confirmation, :password, :password_confirmation, :avatar))
   if @user.save
+    flash[:notice] = "New User Created!"
     # log the user in
     redirect_to sessions_path
   else

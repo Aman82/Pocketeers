@@ -1,0 +1,16 @@
+<% if @user.errors.any? %>
+	<section id="errors">
+	<header>
+		<h3> Your form could not be submitted </h3>
+		<h5> 
+			Please correct the following <%= pluralize(@user.errors.count, "error") %>
+		</h5>
+	</header>
+	<ul>
+	<% @user.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+	<% end %>
+	</ul>
+	</section>
+
+<% end %>

@@ -15,78 +15,17 @@
 
 <body>
     <div class="fixed">
-        <nav class="top-bar" data-topbar="">
-            <ul class="title-area">
-                <li class="name">
-                    <h1><%= link_to "Explor.io", root_path %></h1>
-                </li>
-                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <%= render 'layouts/navbar.html.erb' %>
+    </div>
 
-                <li class="toggle-topbar menu-icon">
-                    <a href="#"><span>Menu</span></a>
-                </li>
-            </ul>
+<% if flash[:notice] %>
+    <p>
+        <%= flash[:notice] %>
+    </p>
+<% end %>
 
-            <section class="top-bar-section">
-                <!-- Right Nav Section -->
+    <%= yield %>
 
-                <ul class="right">
-                    <% if current_user %>
-
-                    <li class="active">
-                    <%= link_to @current_user.username, @current_user %></li>
-
-                    <li class="divider"></li>
-
-                    <li class="active">
-                    <%= link_to "Log Out", signout_path, method: 'delete'  %></li>
-                    
-                    <% else %>
-
-                    <li class="active">
-                    <%= link_to "Sign up", '/users/new' %></li>
-
-                    <li class="divider"></li>
-
-                    <li class="active">
-                        <a data-reveal-id="myModal" href="#">Sign in</a>
-
-                        <div class="tiny reveal-modal" data-reveal="" id="myModal">
-                            <h2 style="text-align: center;"> Sign In ! </h2>
-                            <%= form_for(:session, url: sessions_path) do |f| %><%= f.label :email %><%= f.text_field :email %><br>
-
-                            <%= f.label :password %>
-                            <%= f.password_field :password %>
-                            <%= f.submit "Sign In!", class: "button"%>  <%= link_to "New User", '/users/new' %>
-                            <% end %>
-                        </div>
-                    </li><% end %>
-
-                    <li class="has-dropdown">
-                        <a>Explore +</a>
-
-                        <ul class="dropdown">
-                            <li class="active">
-                            <%= link_to "Groups", groups_path %></li>
-
-                            <li class="active">
-                            <%= link_to "Curriculums", curriculums_path %></li>
-
-                            <li>
-                                <a href="#">About Us</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul><!-- Left Nav Section -->
-
-                <ul class="left">
-                    <li>
-                        <a href="#">How it Works</a>
-                    </li>
-                </ul>
-            </section>
-        </nav>
-    </div><%= yield %>
     
 </body>
 </html>
