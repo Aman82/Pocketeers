@@ -1,10 +1,12 @@
 <%= form_for @group do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
 
-	<%= f.label :topic %>
-	<%= f.collection_select(:curriculum_id, Curriculum.all, :id, :title) %>
-
+	<%= f.label :curriculum %>
+	<%= f.text_field :curriculum_id, :value => @curriculum.title, :readonly => true %>
+	<%= f.hidden_field :curriculum_id, :value => @curriculum.id %>
+	
+	<%= f.label :Mentor %>
+	<%= f.text_field :name, :value => current_user.full_name, :readonly => true %>
+	
 	<%= f.label :location %>
 	<%= f.text_field :location %>
 

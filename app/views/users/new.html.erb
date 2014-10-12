@@ -9,9 +9,25 @@
 
 <%= render 'shared/errors' %>
 
-<%= form_for @user do |f| %>
+<form data-abide>
+  <div class="name-field">
+    
+      <input >
+    </label>
+    <small class="error">Name is required and must be a string.</small>
+  </div>
+  <div class="email-field">
+    <label>Email <small>required</small>
+      <input type="email" required>
+    </label>
+    <small class="error">An email address is required.</small>
+  </div>
+  <button type="submit">Submit</button>
+</form>
 
-	<%= f.label :username%>
+<%= form_for @user, data: {abide: ""} do |f| %>
+
+	<label>Username <small>required</small>
 	<%= f.text_field :username %>
 
 	<%= f.label :first_name %>

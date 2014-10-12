@@ -13,6 +13,7 @@ respond_to :html, :json
 
   def new
     @group = Group.new
+    @curriculum = Curriculum.find(params[:id])
   end
 
   def create
