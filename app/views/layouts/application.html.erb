@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Explorio" %></title>
     
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -51,18 +51,19 @@
                     <li class="active">
                         <a data-reveal-id="myModal" href="#">Sign in</a>
 
-                        <div class="reveal-modal" data-reveal="" id="myModal">
+                        <div class="tiny reveal-modal" data-reveal="" id="myModal">
+                            <h2 style="text-align: center;"> Sign In ! </h2>
                             <%= form_for(:session, url: sessions_path) do |f| %><%= f.label :email %><%= f.text_field :email %><br>
 
                             <%= f.label :password %>
                             <%= f.password_field :password %>
-                            <%= f.submit "Sign In!" %><%= link_to "Sign up", '/users/new' %>
+                            <%= f.submit "Sign In!", class: "button"%>  <%= link_to "New User", '/users/new' %>
                             <% end %>
                         </div>
                     </li><% end %>
 
                     <li class="has-dropdown">
-                        <a>#Explore</a>
+                        <a>Explore +</a>
 
                         <ul class="dropdown">
                             <li class="active">

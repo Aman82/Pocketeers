@@ -1,22 +1,33 @@
 <div class="row">
-  <div class="large-9 medium-8 columns">
-    <h2>Hey everyone look at the courses we offer:</h2>
-    <!-- Grid Example -->
-    <hr />         
-  <form>
-	  <div class="row">
-	    <div class="large-12 columns">
-      <% @curriculums.each do |c| %>
-		<li><%= c.title %></li>
-		<li><%= c.topic %></li>
-		<li><%= c.summary %></li>
-		<li><%= truncate(c.syllabus, length: 55, separator: '') %></li>
-		<li><%= c.timeframe %></li>
-		<li><%= c.created_at %></li>
-		<li><%= c.updated_at %></li>
-		<li><%= link_to "show framework", c %></li>
-		<li><%= link_to "Create new Group from Curriculum", new_group_path %></li><br/>
-	  <% end %>
-	</div>
-</form>
-</div>  
+<div class="large-12 medium-8 columns">
+<h2>Hey everyone look at the curriculums we offer</h2>
+<h3 class="subheader">Learning tracks built by industry professionals	</h3>
+<hr />
+</div>
+</div>
+
+
+<div class="row">
+   <div class="large-12 columns">
+      <dl class="accordion" data-accordion>
+         <% @curriculums.each do |c| %>
+         <dd class="accordion-navigation">
+            <a href='#panel<%= c.id %>'><%= c.title %></a>
+            <div id='panel<%= c.id %>' class="content curriclumInfo">
+               <li><%= c.title %></li>
+               <li><%= c.topic %></li>
+               <li><%= c.summary %></li>
+               <li><%= truncate(c.syllabus, length: 55, separator: '') %></li>
+               <li><%= c.timeframe %></li>
+               <li><%= c.created_at %></li>
+               <li><%= c.updated_at %></li>
+               <li><%= link_to "show framework", c %></li>
+               <li><%= link_to "Create new Group from Curriculum", new_group_path %></li>
+               <br/>
+            </div>
+         </dd>
+         <% end %>
+      </dl>
+   </div>
+</div>
+

@@ -137,7 +137,29 @@ groups = Group.create([
     curriculum: curriculums[0],
     
     users: [users[1]]
-  }
+  },
+  { 
+  name: 'Richard Wyckoff',
+  topic: "Stock Trading",
+  location: '1520 2nd Street',
+  start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+  end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+
+  curriculum: curriculums[0],
+  
+  users: [users[1]]
+},
+  { 
+  name: 'Richard Wyckoff',
+  topic: "Stock Trading",
+  location: '1520 2nd Street',
+  start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+  end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
+
+  curriculum: curriculums[0],
+  
+  users: [users[1]]
+}
   ]);
 
 # UserGroup.all.first.privilege = 3
