@@ -31,7 +31,8 @@ function initialize() {
     }
   })
 
-  $('#search').click(function(){
+  $('#search').click(function(e){
+    e.preventDefault();
     $("#map-canvas").show("slow", function(){
       google.maps.event.trigger(map,"resize")
       if ($('#address').val() == ""){
@@ -66,6 +67,10 @@ function initialize() {
         });
       }
     });
+$('html, body').animate({
+        scrollTop: $("#search_form").offset().top - 45
+    }, 1000);
+// $(window).scrollTop(805)
   });
 }
 
@@ -95,12 +100,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div id="search_form" class="row">
   <div class="large-12 columns">
     <div class="row collapse">
+    <form>
     <div class="large-8 small-9 columns">
       <input id="address" type="text" placeholder="Find Groups">
     </div>
     <div class="large-4 small-3 columns">
       <button id="search" class=" postfix alert button">Search Location</button>
   </div>
+  </form>
 </div>
 </div>
 </div>
@@ -113,9 +120,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="panel">
-      <h3>Learn Something new, with people and you!!!
-      <%= link_to "See Curriculums", curriculums_path, class:   "small round button" %></h3>
+    <div class="moreInfo panel">
+      <h3 id="about">Mentor guided track with a group of highly motivated like minded individuals</h3>
+      <div id="moreInfo_buttons">
+        <%= link_to "See All Groups", groups_path, class:   "large-5 button" %>
+
+        <%= link_to "See Curriculums", curriculums_path, class:   "large-5 button" %>
+      </div>
     </div>
   </div>
 </div>
@@ -123,7 +134,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div class="row">
 <% @groups.each do |group| %>
   <div class="large-4 columns">
-    <div class="panel"  style="height: 200px;">
+    <div class="pagesGroup panel">
       <h4><%= group.curriculum.title %> </h4>
       <div class="row">
         <div class="large-9 columns">

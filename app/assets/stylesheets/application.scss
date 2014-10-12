@@ -23,7 +23,7 @@
 
  body {
  	background-color: RGBA(238, 237, 233, 1);
- 	  // -webkit-font-smoothing: antialiased;
+ 	  -webkit-font-smoothing: antialiased;
  }
 
 
@@ -41,17 +41,18 @@
  	padding: 10px 0 10px 0;
  	height: 90px;
 	text-shadow: 2px 2px 11px #303840;
-	padding-top: 130px;
+	padding-top: 150px;
  }
 
   .banner {
-	background-image: image-url('bike.jpg');
-	// background-position: 0px -220px, center;
+	background-image: image-url('coffee.jpg');
+	background-position: 0px -120px, center;
+	background: cover;
 	background-size: 100%;
 	background-attachment: fixed;
 	// background-color: RGBA(86, 208, 179, 1);
 	// opacity: 0.7;
-	height: 500px;
+	height: 610px;
 	width: 100%;
 	z-index: 1000;
  }
@@ -70,9 +71,11 @@
  	// border-radius: 3px;	
  	border: 1px solid #D8D8D8;
  	display: none;
- 	width: 67.5%; 
+ 	width: 80%; 
  	height: 60%; 
- 	margin: 0 auto;
+ 	margin: auto;
+ 	margin-bottom: 20px;
+ 	box-shadow: 10px 90px 93px -90px rgba(0,0,0,0.35);
  }
 
 
