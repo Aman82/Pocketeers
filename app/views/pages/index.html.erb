@@ -109,17 +109,28 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 <div class="banner">
-  <h1 id="logo">Welcome to Explorio</h1>
+  <div id="logo">Welcome to Explorio
+    <div id="sub_logo">Learn Something New!</div>
+  </div>
 </div>
 
 <script>
 
-var width = 960,
-    height = 500;
+var width = $('.banner').width(),
+    height = $('.banner').height();
 
-var nodes = d3.range(10).map(function() { return {radius: Math.random() * 12 + 4}; }),
+$.get('/api/interests').then(function(data){
+
+var nodes = d3.range(data.length)
+
+for(var j = 0; j<nodes.length; j++){
+  nodes[j] = ({radius: data[j].count/20, text: data[j].topic}); 
+
+}
+
     root = nodes[0],
     color = d3.scale.category10();
+
 
 root.radius = 0;
 root.fixed = true;
@@ -134,12 +145,20 @@ force.start();
 
 var svg = d3.select(".banner").append("svg")
 
-svg.selectAll("circle")
+var container = svg.selectAll(".node")
     .data(nodes.slice(1))
-    .enter().append("circle")
-    .attr("r", function(d) { return d.radius; })
-    .style("fill", function(d, i) { return color(i % 3); });
+    .enter().append("g")
+    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
+container.append("circle")
+    .attr("r", function(d) { return d.radius; })
+    .style("fill", function(d, i) { return color(i % 3); })
+
+container.append("text")
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d.text; })
+    .attr("fill", "white");
+    
 force.on("tick", function(e) {
   var q = d3.geom.quadtree(nodes),
       i = 0,
@@ -147,9 +166,8 @@ force.on("tick", function(e) {
 
   while (++i < n) q.visit(collide(nodes[i]));
 
-  svg.selectAll("circle")
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
+  svg.selectAll("g")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 });
 
 svg.on("mousemove", function() {
@@ -182,6 +200,7 @@ function collide(node) {
     return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
   };
 }
+});
 
 </script>
 
