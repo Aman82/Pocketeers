@@ -9,9 +9,16 @@
   });
 </script>
 
+  <ul class="breadcrumbs">
+    <li><%= link_to 'Home', root_path %></li>
+    <li><a href="#">Features</a></li>
+    <li class="unavailable"><a href="#">Gene Splicing</a></li>
+    <li class="current"><a href="#">Cloning</a></li>
+  </ul>
+
 <div class="groups_body">
     <div class="row header">
-        THIS IS THE HEADER AREA
+        <h2 style="text-align: center;"><strong>WHAT'S GOING ON NEAR YOU?</strong></h2>
     </div><!-- Group Search Bar -->
     <!-- Use ajax for single page search -->
 
@@ -32,23 +39,28 @@
     <div class="row">
     <div class="icon-bar five-up">
   <a class="item">
-    <img src="../assets/img/images/fi-home.svg" >
+    <!-- <img src="/assets/chemistry1.svg" > -->
+    <h2 class="icon_text">P</h2>
     <label>Programming</label>
   </a>
   <a class="item">
-    <img src="../assets/img/images/fi-bookmark.svg" >
+  <h2 class="icon_text">C</h2>
+    <!-- <img src="../assets/img/images/fi-bookmark.svg" > -->
     <label>Capital Markets</label>
   </a>
   <a class="item">
-    <img src="../assets/img/images/fi-info.svg" >
+    <h2 class="icon_text">P</h2>
+    <!-- <img src="../assets/img/images/fi-info.svg" > -->
     <label>Poetry</label>
   </a>
   <a class="item">
-    <img src="../assets/img/images/fi-mail.svg" >
+    <h2 class="icon_text">M</h2>
+    <!-- <img src="../assets/img/images/fi-mail.svg" > -->
     <label>Mathmatics</label>
   </a>
   <a class="item">
-    <img src="../assets/img/images/fi-like.svg" >
+  <h2 class="icon_text">B</h2>
+    <!-- <img src="../assets/img/images/fi-like.svg" > -->
     <label>Biochemistry</label>
   </a>
 </div>

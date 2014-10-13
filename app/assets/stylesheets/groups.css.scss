@@ -17,9 +17,11 @@
 .group_search {
 	// border-bottom: 1px solid gray;
 	width: 1000px; 
-	box-shadow: 0px 10px 23px -18px rgba(0,0,0,0.95);
-	margin-bottom: 15px;
+	box-shadow: 0px 10px 0px -9px rgba(0,0,0,0.55);
+	padding-top: 10px;
+	
 }
+
 
 .sidebar {
 	height: 500px;
@@ -35,8 +37,21 @@
 	margin: 5px 0 5px 0;
 	height: 100px;
 	border-radius: 0px 6px 6px 0px;
-	box-shadow: 10px 10px 23px -23px rgba(0,0,0,0.75);
+	box-shadow: 0px 10px 23px -13px rgba(0,0,0,0.35);
 	overflow: scroll;
+
+
+}
+
+.icon-bar {
+	box-shadow: 0px 10px 23px -9px rgba(0,0,0,0.55);
+}
+
+.icon_text {
+	color: white; 
+	margin: 0; 
+	padding: 0;
+	font-size: 24px;
 }
 
 // .group_module {
@@ -46,6 +61,7 @@
 
 .group_module li {
 	list-style: none;
+
 }
 
 .footer {

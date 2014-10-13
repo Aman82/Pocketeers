@@ -21,14 +21,17 @@
  @import url(https://fonts.googleapis.com/css?family=Pacifico);
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700|Maven+Pro:400,500,700,900|Pontano+Sans);
 
+$navbar: RGBA(238, 237, 233, 1);
+
  body {
- 	background-color: RGBA(238, 237, 233, 1);
+ 	background-color: $navbar;
  	  -webkit-font-smoothing: antialiased;
  }
 
 
  .top-bar {
  	background: RGBA(48, 56, 64, 1);
+ 	box-shadow: 0px 10px 23px -18px rgba(0,0,0,0.95);
  }
 
  #logo {
@@ -76,6 +79,10 @@
  	margin: auto;
  	margin-bottom: 20px;
  	box-shadow: 10px 90px 93px -90px rgba(0,0,0,0.35);
+ }
+
+ .pagesGroup {
+ 
  }
 
 
