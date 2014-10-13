@@ -114,8 +114,8 @@ curriculums = Curriculum.create([
 
 groups = Group.create([
   { 
-    name: 'Peter Thiel',
-    topic: "HTML 5 Advanced Topics",
+    name: users[1].full_name,
+    topic: curriculums[0].topic,
     location: '1617 Broadway, Santa Monica, CA',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
@@ -128,8 +128,8 @@ groups = Group.create([
   },
 
   { 
-    name: 'Richard Wyckoff',
-    topic: "Stock Trading",
+    name: users[0].full_name,
+    topic: curriculums[1].topic,
     location: '1520 2nd Street, Santa Monica, CA',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
@@ -140,7 +140,7 @@ groups = Group.create([
   },
   { 
   name: users[2].full_name,
-  topic: "Financial Data Mining with Python",
+  topic: curriculums[2].topic,
   location: '533 Marguerita, Santa Monica, CA',
   start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
   end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
@@ -150,8 +150,8 @@ groups = Group.create([
   users: [users[1]]
 },
   { 
-  name: 'Justin Jittamongrol',
-  topic: "Learn RSpec w/ a Master",
+  name: users[3].full_name,
+  topic: curriculums[3].topic,
   location: '1520 2nd Street, Santa Monica, CA',
   start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
   end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
@@ -162,6 +162,47 @@ groups = Group.create([
 }
   ]);
 
+interests = Interest.create([
+  {
+    count: 300,
+    topic: 'Biochemistry'
+  }, {
+    count: 450,
+    topic: 'Stock Market'
+  }, {
+    count: 500,
+    topic: 'Psychology'
+  }, {
+    count: 550,
+    topic: 'Biology'
+  }, {
+    count: 650,
+    topic: 'Graphic Design'
+  }, {
+    count: 445,
+    topic: 'Economics'
+  }, {
+    count: 706,
+    topic: 'English'
+  }, {
+    count: 450,
+    topic: 'Computer Science'
+  }, {
+    count: 500,
+    topic: 'Math'
+  }, {
+    count: 550,
+    topic: 'International Studies'
+  }, {
+    count: 650,
+    topic: 'Poetry'
+  }, {
+    count: 1000,
+    topic: 'League of Legends'
+  }, {
+    count: 504,
+    topic: 'Cooking'
+  }]);
 # UserGroup.all.first.privilege = 3
 
 # reviews = Review.create([
