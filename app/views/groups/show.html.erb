@@ -18,7 +18,7 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <h1><%= @group.curriculum.title %></h1>
+        <h1 style="text-align: center;"><%= @group.curriculum.title %></h1>
       </div>
     </div>
     
@@ -45,137 +45,48 @@
               <%= link_to 'Edit Group', edit_group_path(@group) %><br/>
 	        		<%= link_to 'Delete Group', @group, method: :delete %>
               </p>
-	        	</div>        
+	        	</div>   
+
 					</div>
+            <ul class="breadcrumbs">
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Groups', groups_path %></li>
+  </ul>
       	</div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-8 medium-8 columns">
-        <h5>something:</h5>
-        <!-- Grid Example -->
-
-        <div class="row">
-          <div class="large-12 columns">
-            <div class="callout panel">
-              <p><strong>something</strong>something</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-        </div>
-        
-        <hr />
-                
-        <h5>We bet you&rsquo;ll need a form somewhere:</h5>
-        <form>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-12.columns" />
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-4 medium-4 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-4.columns" />
-				    </div>
-				    <div class="large-4 medium-4 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-4.columns" />
-				    </div>
-				    <div class="large-4 medium-4 columns">
-				      <div class="row collapse">
-				        <label>Input Label</label>
-				        <div class="small-9 columns">
-				          <input type="text" placeholder="small-9.columns" />
-				        </div>
-				        <div class="small-3 columns">
-				          <span class="postfix">.com</span>
-				        </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Select Box</label>
-				      <select>
-				        <option value="husker">Husker</option>
-				        <option value="starbuck">Starbuck</option>
-				        <option value="hotdog">Hot Dog</option>
-				        <option value="apollo">Apollo</option>
-				      </select>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-6 medium-6 columns">
-				      <label>Choose Your Favorite</label>
-				      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
-				      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
-				    </div>
-				    <div class="large-6 medium-6 columns">
-				      <label>Check these out</label>
-				      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Textarea Label</label>
-				      <textarea placeholder="small-12.columns"></textarea>
-				    </div>
-				  </div>
-				</form>
-      </div>     
-
-      <div class="large-4 medium-4 columns">
-      <% if current_user %>
+        <div class="panel">
+          <h3>SIGN UP TODAY!</h3>
+          <a href="http://foundation.zurb.com/docs/">Chat Box</a>
+          <% if current_user %>
         <%= form_for [@group, @user_group] do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>   
           <%= f.hidden_field :group_id, :value => @group.id %>     
           <%= f.submit "Join Group", class: "medium success button" %><br/>
         <% end %>
       <% else %>
-        <button class="medium success button" data-reveal-id="myModal">Login to Join!</button>
+        <button class="large-12 success button" data-reveal-id="myModal">Login to Join!</button>
       <% end %>
-				<div class="panel">
-        	<h3>SIGN UP TODAY!</h3>
-        	<a href="http://foundation.zurb.com/docs/">Chat Box</a>          
+                    
         </div>
-        <div class="panel">
-          <h3>Members</h3>
+                <div class="panel">
+          <h3>Current Members</h3>
           <% @group.users.each do |user| %>
             <li><%= user.username %></li>
           <% end %>        
         </div>
+      </div>
+
+    </div>
+
+
+        
+        <hr />
+         <div class="large-4 medium-4 columns">
+      
+
+
+
+
+
       </div>
     </div>
     
