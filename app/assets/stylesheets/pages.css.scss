@@ -36,8 +36,28 @@
 }
 
 svg {
-	height: inherit;
+	height: 150%;
 	width: inherit;
 	float: left;
 	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding-top: 130px;
 }
+
+ #logo {
+ 	color: RGB(232, 86, 113);
+ 	font-family: 'Pacifico', cursive;
+ 	text-align: center;
+ 	color: white;
+ 	font-size: 85px;
+ 	margin: 0 auto;
+ 	padding: 10px 0 10px 0;
+ 	height: 90px;
+	text-shadow: 2px 2px 11px #303840;
+	padding-top: 40px;
+ }
+
+ #sub_logo {
+ 	font-size: 40px;
+ }
