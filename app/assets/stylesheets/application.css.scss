@@ -21,10 +21,10 @@
  @import url(https://fonts.googleapis.com/css?family=Pacifico);
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700|Maven+Pro:400,500,700,900|Pontano+Sans);
 
-$navbar: RGBA(238, 237, 233, 1);
+$body: #F2F2F0;
 
  body {
- 	background-color: $navbar;
+ 	background-color: $body;
  	  -webkit-font-smoothing: antialiased;
  }
 
@@ -43,18 +43,6 @@ $navbar: RGBA(238, 237, 233, 1);
 	padding: 2px;
 }
 
- #logo {
- 	color: RGB(232, 86, 113);
- 	font-family: 'Pacifico', cursive;
- 	text-align: center;
- 	color: white;
- 	font-size: 85px;
- 	margin: 0 auto;
- 	padding: 10px 0 10px 0;
- 	height: 90px;
-	text-shadow: 2px 2px 11px #303840;
-	padding-top: 150px;
- }
 
   .banner {
 	background-image: image-url('coffee.jpg');

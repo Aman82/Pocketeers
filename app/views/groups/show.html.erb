@@ -2,84 +2,101 @@
 
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explorio| Welcome</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-    <script src="js/vendor/modernizr.js"></script>
-  </head>
-  <body>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
 
-  <ul class="breadcrumbs">
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Groups', groups_path %></li>
-  </ul>
+<!-- Breadcrumbs -->
 
-    <div class="row">
-      <div class="large-12 columns">
-        <h1 style="text-align: center;"><%= @group.curriculum.title %></h1>
-      </div>
-    </div>
+<ul class="breadcrumbs">
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'Groups', groups_path %></li>
+</ul>
+
+<!-- Group Header -->
+
+<div class="row">
+  <div class="large-12 columns">
+    <h2 id="group-header"><%= @group.curriculum.title %></h2>
+  </div>
+</div>
+
+<!-- Beggining of Groups Info Panel -->
     
-    <div class="row">
-      <div class="large-12 columns">
-      	<div class="panel">
-	        
-	        <h3><%= @group.curriculum.summary %></h3>
-	        <p><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %></p>
-	        <div class="row">
-	        	<div class="large-4 medium-4 columns">
-          <p>
-            <%= @group.start_date %><br/>
-	    	    <%= @group.end_date %>
+<div class="row">
+  <div class="large-12 columns">
+  	<div class="panel groups-info-container">
+        
+          <h3 id="groups-summary"><%= @group.curriculum.summary %></h3>
+          <p class="syllabus"><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %>
           </p>
-	    	</div>
-	        	<div class="large-4 medium-4 columns">
-              <p><%= @group.name %> </p>
-             
-	        		<p><%= @group.location %> </p>
-	        	</div>
-	        	<div class="large-4 medium-4 columns">
-              <p>
-              <%= link_to 'Edit Group', edit_group_path(@group) %><br/>
-	        		<%= link_to 'Delete Group', @group, method: :delete %>
-              </p>
-	        	</div>   
+        
+        <div class="row">
+          <div class="large- medium-4 columns">
+            <p><strong>Mentor: </strong><%= @group.name %></p>
+          </div>        	
+          <div class="large-4 medium-4 columns">
+            <p><strong>Location: </strong><%= @group.location %></p>
+        	</div>
+        	<div class="large-4 medium-4 columns">
+            <p>
+              Start Date: <%= @group.start_date %>
+          		End Date: <%= @group.end_date %>
+            </p>
+        	</div> 
 
-					</div>
-            <ul class="breadcrumbs">
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Groups', groups_path %></li>
-  </ul>
-      	</div>
-        <div class="panel">
-          <h3>SIGN UP TODAY!</h3>
-          <a href="http://foundation.zurb.com/docs/">Chat Box</a>
-          <% if current_user %>
-        <%= form_for [@group, @user_group] do |f| %>
-          <%= f.hidden_field :user_id, :value => current_user.id %>   
-          <%= f.hidden_field :group_id, :value => @group.id %>     
-          <%= f.submit "Join Group", class: "medium success button" %><br/>
-        <% end %>
-      <% else %>
-        <button class="large-12 success button" data-reveal-id="myModal">Login to Join!</button>
-      <% end %>
-                    
-        </div>
-                <div class="panel">
-          <h3>Current Members</h3>
-          <% @group.users.each do |user| %>
-            <li><%= user.username %></li>
-          <% end %>        
-        </div>
-      </div>
-
+  			</div>
+          <ul class="breadcrumbs admin large-3">
+            <li><%= link_to 'Delete Group', @group, method: :delete %></li>
+            <li><%= link_to 'Edit Group', edit_group_path(@group) %></li>
+          </ul>
     </div>
 
+<!-- End of Groups info Container -->
 
+<hr />
+
+<!-- Begin Sign up Div -->
+
+
+<div class = "row">
+  <div class="large-6 columns">
+    <h5 id="group-header">Members</h5>
+  </div>
+</div>
+
+<div class="row">
+  <div class="panel large-6 columns members">
+    <h3>Current Members</h3>
+    <% @group.users.each do |user| %>
+      <li><%= user.username %></li>
+    <% end %> 
+  </div>
+</div>
+
+
+      <% if current_user %>
+      <%= form_for [@group, @user_group] do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>   
+      <%= f.hidden_field :group_id, :value => @group.id %>     
+      <%= f.submit "Join Group", class: "medium success button" %><br/>
+      <% end %>
+    <% else %>
+      <button class="large-12 success button" data-reveal-id="myModal">Login to Join!</button>
+    <% end %>  
+
+
+  </div> 
+</div>
+
+<!-- End of all Groups info panels -->
         
-        <hr />
+
          <div class="large-4 medium-4 columns">
       
 
