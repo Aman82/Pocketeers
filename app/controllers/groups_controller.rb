@@ -27,6 +27,7 @@ respond_to :html, :json
 
   def edit
     @group = Group.find(params[:id])
+    @curriculum = Curriculum.find(@group.curriculum_id)
   end
 
   def update

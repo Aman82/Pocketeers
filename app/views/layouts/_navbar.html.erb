@@ -36,10 +36,19 @@
 
                         <div class="tiny reveal-modal" data-reveal="" id="myModal">
                             <h2 style="text-align: center;"> Sign In ! </h2>
-                            <%= form_for(:session, url: sessions_path) do |f| %><%= f.label :email %><%= f.text_field :email %><br>
+                            <%= form_for(:session, url: sessions_path, data: {abide: ""}) do |f| %>
+                            
+                            <div class="email-field">
+                                <label>Email
+                                <%= f.text_field :email, placeholder: 'Email', required:"", id: "email", pattern: "email" %>
+                                <small class="error">Enter your email address.</small>
+                            </div>
 
-                            <%= f.label :password %>
-                            <%= f.password_field :password %>
+                            <div class="password-field">
+                                <label>Password
+                                <%= f.password_field :password, placeholder: 'Password', required:"", id: "password" %>
+                                <small class="error">Enter your password.</small>
+                            </div>
                             <%= f.submit "Sign In!", class: "button"%>  <%= link_to "New User", '/users/new' %>
                             <% end %>
                         </div>
