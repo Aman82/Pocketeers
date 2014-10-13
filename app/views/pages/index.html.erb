@@ -117,7 +117,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 var width = 960,
     height = 500;
 
-var nodes = d3.range(200).map(function() { return {radius: Math.random() * 12 + 4}; }),
+var nodes = d3.range(10).map(function() { return {radius: Math.random() * 12 + 4}; }),
     root = nodes[0],
     color = d3.scale.category10();
 
@@ -132,11 +132,11 @@ var force = d3.layout.force()
 
 force.start();
 
-var svg = d3.select("").append("svg")
+var svg = d3.select(".banner").append("svg")
 
 svg.selectAll("circle")
     .data(nodes.slice(1))
-  .enter().append("circle")
+    .enter().append("circle")
     .attr("r", function(d) { return d.radius; })
     .style("fill", function(d, i) { return color(i % 3); });
 
@@ -227,7 +227,7 @@ function collide(node) {
     <div class="pagesGroup panel">
       <h4><%= group.curriculum.title %> </h4>
       <div class="row">
-        <div class="large-9 columns">
+        <div class="large-12 columns">
           <p><%= truncate(group.curriculum.summary, length: 55, separator: '') %> </p>
           <%= link_to "Explore", group, class: "tiny button" %>
         </div>

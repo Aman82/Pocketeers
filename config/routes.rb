@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'interests/index'
+
 root 'pages#index'
 
 #resources :sessions
@@ -14,10 +16,10 @@ resources :groups do
 end
 resources :pages
 
+scope "api", defaults: {format: "json"} do 
+  resources :curriculums, :groups, :interests
+end
 
-  scope "api", defaults: {format: "json"} do 
-    resources :curriculums, :groups
-  end
 
 
   
