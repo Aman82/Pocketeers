@@ -1,33 +1,38 @@
 <div class="row">
 <div class="large-12 medium-8 columns">
-<h2>Hey everyone look at the curriculums we offer</h2>
-<h3 class="subheader">Learning tracks built by industry professionals	</h3>
+<div class="c-header"></div>
+<h2>Teach a course from our Prebuilt Curriculums</h2>
+<h3 class="subheader">Guided Learning tracks built by industry professionals</h3>
+
 <hr />
 </div>
 </div>
 
 
 <div class="row">
+<h5 class="subheader">Select topic to view dropdown menu</h5>
    <div class="large-12 columns">
-      <dl class="accordion" data-accordion>
+      <dl class="accordion " data-accordion>
          <% @curriculums.each do |c| %>
-         <dd class="accordion-navigation">
-            <a href='#panel<%= c.id %>'><%= c.title %></a>
+         <dd class="accordion-navigation dropdown">
+            <a href='#panel<%= c.id %>'>+  <%= c.title %></a>
             <div id='panel<%= c.id %>' class="content curriclumInfo">
-               <li><%= c.title %></li>
-               <li><%= c.topic %></li>
+            <ul class="dropdown">
+               <li><strong><%= c.title %></strong></li>
+               <li><%= c.topic %></li><br>
                <li><%= c.summary %></li>
-               <li><%= truncate(c.syllabus, length: 55, separator: '') %></li>
-               <li><%= c.timeframe %></li>
-               <li><%= c.created_at %></li>
-               <li><%= c.updated_at %></li>
-               <li><%= link_to "show framework", c %></li>
+               <li><%= truncate(c.syllabus, length: 155, separator: '') %></li>
+               <li><%= link_to "More Info on Framework", c %></li><br>
+               <li><strong>Course Length: </strong><%= c.timeframe %></li>
+               
                <li><%= link_to "Create new Group from Curriculum", new_group_path(:id => c.id) %></li>
+               </ul>
                <br/>
             </div>
          </dd>
          <% end %>
       </dl>
+      <h5 class="subheader" style="text-align: center;">Today is a very exciting day</h5>
    </div>
 </div>
 

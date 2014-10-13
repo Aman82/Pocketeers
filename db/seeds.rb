@@ -116,7 +116,7 @@ groups = Group.create([
   { 
     name: 'Peter Thiel',
     topic: "HTML 5 Advanced Topics",
-    location: '1617 Broadway Santa Monica',
+    location: '1617 Broadway, Santa Monica, CA',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
 
@@ -130,33 +130,33 @@ groups = Group.create([
   { 
     name: 'Richard Wyckoff',
     topic: "Stock Trading",
-    location: '1520 2nd Street',
+    location: '1520 2nd Street, Santa Monica, CA',
     start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
     end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
 
-    curriculum: curriculums[0],
+    curriculum: curriculums[1],
     
     users: [users[1]]
   },
   { 
-  name: 'Richard Wyckoff',
-  topic: "Stock Trading",
-  location: '1520 2nd Street',
+  name: users[2].full_name,
+  topic: "Financial Data Mining with Python",
+  location: '533 Marguerita, Santa Monica, CA',
   start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
   end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
 
-  curriculum: curriculums[0],
+  curriculum: curriculums[2],
   
   users: [users[1]]
 },
   { 
-  name: 'Richard Wyckoff',
-  topic: "Stock Trading",
-  location: '1520 2nd Street',
+  name: 'Justin Jittamongrol',
+  topic: "Learn RSpec w/ a Master",
+  location: '1520 2nd Street, Santa Monica, CA',
   start_date: DateTime.new(2001,2,3,4,5,6,'+7'),
   end_date: DateTime.new(2001,2,3,4,5,6,'+7'),
 
-  curriculum: curriculums[0],
+  curriculum: curriculums[3],
   
   users: [users[1]]
 }
