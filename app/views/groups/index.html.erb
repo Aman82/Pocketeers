@@ -9,6 +9,8 @@
   });
 </script>
 
+<!-- Breadcrumbls Trail -->
+
   <ul class="breadcrumbs">
     <li><%= link_to 'Home', root_path %></li>
     <li><a href="#">Features</a></li>
@@ -16,11 +18,15 @@
     <li class="current"><a href="#">Cloning</a></li>
   </ul>
 
+<!-- HEADER INFO -->
+
 <div class="groups_body">
     <div class="row header">
-        <h2 style="text-align: center;"><strong>WHAT'S GOING ON NEAR YOU?</strong></h2>
+        <h2 id="groups-header"><strong>WHAT'S GOING ON NEAR YOU?</strong></h2>
     </div><!-- Group Search Bar -->
     <!-- Use ajax for single page search -->
+
+<!-- SEARCH BAR -->
 
     <div class="row group_search">
         <div class="row collapse">
@@ -35,6 +41,8 @@
             </div>
         </div>
     </div>
+
+<!-- BLACK ICON BAR -->
 
     <div class="row">
     <div class="icon-bar five-up">
@@ -65,6 +73,7 @@
   </a>
 </div>
 
+<!-- Group modules -->
 
         <% @groups.each do |group| %>
 
@@ -73,7 +82,7 @@
         <ul>
             <li>
                 <div class="large-6 columns">
-                    <strong><%= group.curriculum.title %></strong><br>
+                    <%= link_to group.curriculum.title, group %><br>
                     <!-- <%= group.curriculum.topic %><br/> -->
                      <!-- <div class="row"> -->
                      <%= group.location %><br>
@@ -82,7 +91,8 @@
                 </div>
 
                 <div class="large-6 columns">
-                    <%= group.start_date %><%= group.end_date %><%= group.curriculum.timeframe %><%= link_to 'Show page', group %>
+                    <%= group.start_date.to_s(:short) %> | <%= group.end_date.to_s(:short) %></br>
+                    <%= group.curriculum.timeframe %>
                 </div>
             </li>
 
@@ -95,11 +105,9 @@
         </div><% end %>
 
         <div class="large-4 small-3 columns">
-            <%= link_to 'Create a New Group +', '/groups/new', class:"tiny button expand" %>
+            <%= link_to 'Create a New Group +', curriculums_path, class:"tiny button expand" %>
         </div>
     </div>
-
-    <div class="row footer"></div>
 </div>
 
 
