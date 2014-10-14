@@ -1,13 +1,11 @@
 
 <div class="large-4 columns">
-.
+<%= render 'shared/errors' %>.
 </div>
 <div class="large-4 columns">
 
 
 <h1>Sign Up!</h1>
-
-<%= render 'shared/errors' %>
 
 <%= form_for @user, data: {abide: ""} do |f| %>
 
@@ -31,26 +29,26 @@
 
 	<div class="email-field">
 		<label>Email <small>required</small>
-		<%= f.text_field :email, placeholder: 'Email', required:"", id: "email", pattern: "email" %>
+		<%= f.text_field :email, placeholder: 'Email', required:"", id: "theemail", pattern: "email" %>
 		<small class="error">An email address is required.</small>
 	</div>
 
 
 	<div class="email-field">
 		<label>Confirm Email <small>required</small>
-		<%= f.text_field :email_confirmation, placeholder: 'Confirm your email', required: "", data: {equalto: "email"}, pattern: "email"  %>
+		<%= f.text_field :email_confirmation, placeholder: 'Confirm your email', required: "", data: {equalto: "theemail"}, pattern: "email"  %>
 		<small class="error">Email did not match.</small>
 	</div>
 
 	<div class="password-field">
 		<label>Password <small>required</small>
-		<%= f.password_field :password, placeholder: 'Password', required:"", id: "password" %>
+		<%= f.password_field :password, placeholder: 'Password', required:"", id: "thepassword" %>
 		<small class="error">A password is required.</small>
 	</div>
 
 	<div class="password-confirmation-field">
 		<label>Confirm Password <small>required</small>
-		<%= f.password_field :password_confirmation, placeholder: 'Confirm your password', required: "", data: {equalto: "password"} %>
+		<%= f.password_field :password_confirmation, placeholder: 'Confirm your password', required: "", data: {equalto: "thepassword"} %>
 		<small class="error">Password did not match</small>
 	</div>
 

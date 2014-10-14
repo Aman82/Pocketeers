@@ -79,7 +79,7 @@ curriculums = Curriculum.create([
       week 3: Advanced topics on LOL',
     timeframe: '2 Weeks',
 
-    user: users[1]   #curator of curriculum
+    user: users[0]   #curator of curriculum
   },
     {
     title: 'Financial Data Mining with Python',
@@ -92,7 +92,7 @@ curriculums = Curriculum.create([
       week 3: Advanced topics on LOL',
     timeframe: '3 Weeks',
 
-    user: users[1]   #curator of curriculum
+    user: users[3]   #curator of curriculum
   },
   {
     title: 'Learn RSpec w/ a Master',
@@ -105,7 +105,7 @@ curriculums = Curriculum.create([
     week 3: Advanced topics on LOL',
     timeframe: '4 Weeks',
 
-    user: users[1]   #curator of curriculum
+    user: users[2]   #curator of curriculum
   },
 
 
