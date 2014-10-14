@@ -44,10 +44,8 @@
             <p><strong>Location: </strong><%= @group.location %></p>
         	</div>
         	<div class="large-4 medium-4 columns">
-            <p>
-              Start Date: <%= @group.start_date %>
-          		End Date: <%= @group.end_date %>
-            </p>
+              <li>Start Date: <%= @group.start_date.to_s(:short) %>
+          		<li>End Date: <%= @group.end_date.to_s(:short) %>
         	</div> 
 
   			</div>
@@ -82,7 +80,7 @@
         <%= form_for [@group, @user_group] do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>   
         <%= f.hidden_field :group_id, :value => @group.id %>     
-        <%= f.submit "Join Group", class: "medium success button" %><br/>
+        <%= f.submit "Join Group", class: "large-12 success button" %><br/>
         <% end %>
       <% else %>
         <button class="large-12 success button" data-reveal-id="myModal">Login to Join!</button>

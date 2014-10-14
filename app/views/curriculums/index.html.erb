@@ -15,7 +15,7 @@
       <dl class="accordion " data-accordion>
          <% @curriculums.each do |c| %>
          <dd class="accordion-navigation dropdown">
-            <a href='#panel<%= c.id %>'>+  <%= c.title %><p>Created by: <%= c.user.full_name %></p></a>
+            <a href='#panel<%= c.id %>'>+  <%= c.title %><p id="creator">Created by: <%= c.user.full_name %></p></a>
             <div id='panel<%= c.id %>' class="content curriclumInfo">
             <ul class="dropdown">
                <li><strong><%= c.title %></strong></li>
