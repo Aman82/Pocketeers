@@ -21,9 +21,9 @@ RSpec.describe User, :type => :model do
 
   it "should have username, email, or password" do
     user = User.new(username: "Alex")
-    expect(user).to be_valid
+    expect(user).to be_invalid
     user = User.new(email: "alex@gmail.com")
-    expect(user).to be_valid
+    expect(user).to be_invalid
   end
 
   it "can have email" do
@@ -31,7 +31,7 @@ RSpec.describe User, :type => :model do
     expect(user.email?).to be(true)
   end
     it "can have email_confirmation" do
-    user = User.new(email_confirmation: true)
-    expect(user.email_confirmation?).to be(true)
+    user = User.new(email_confirmation: false)
+    expect(user.email_confirmation?).to be(false)
   end
 end
