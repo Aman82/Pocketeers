@@ -2,180 +2,105 @@
 
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explorio| Welcome</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-    <script src="js/vendor/modernizr.js"></script>
-  </head>
-  <body>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
 
-  <ul class="breadcrumbs">
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Groups', groups_path %></li>
-  </ul>
+<!-- Breadcrumbs -->
 
-    <div class="row">
-      <div class="large-12 columns">
-        <h1><%= @group.curriculum.title %></h1>
-      </div>
-    </div>
+<ul class="breadcrumbs">
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'Groups', groups_path %></li>
+</ul>
+
+<!-- Group Header -->
+
+<div class="row">
+  <div class="large-12 columns">
+    <h2 id="group-header"><%= @group.curriculum.title %></h2>
+  </div>
+</div>
+
+<!-- Beggining of Groups Info Panel -->
     
-    <div class="row">
-      <div class="large-12 columns">
-      	<div class="panel">
-	        
-	        <h3><%= @group.curriculum.summary %></h3>
-	        <p><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %></p>
-	        <div class="row">
-	        	<div class="large-4 medium-4 columns">
-          <p>
-            <%= @group.start_date %><br/>
-	    	    <%= @group.end_date %>
+<div class="row">
+  <div class="large-12 columns">
+  	<div class="panel groups-info-container">
+        
+          <h3 id="groups-summary"><%= @group.curriculum.summary %></h3>
+          <p class="syllabus"><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %><%= @group.curriculum.syllabus %>
           </p>
-	    	</div>
-	        	<div class="large-4 medium-4 columns">
-              <p><%= @group.name %> </p>
-             
-	        		<p><%= @group.location %> </p>
-	        	</div>
-	        	<div class="large-4 medium-4 columns">
-              <p>
-              <%= link_to 'Edit Group', edit_group_path(@group) %><br/>
-	        		<%= link_to 'Delete Group', @group, method: :delete %>
-              </p>
-	        	</div>        
-					</div>
-      	</div>
-      </div>
+        
+        <div class="row">
+          <div class="large- medium-4 columns">
+            <p><strong>Mentor: </strong><%= @group.name %></p>
+          </div>        	
+          <div class="large-4 medium-4 columns">
+            <p><strong>Location: </strong><%= @group.location %></p>
+        	</div>
+        	<div class="large-4 medium-4 columns">
+              <li>Start Date: <%= @group.start_date.to_s(:short) %>
+          		<li>End Date: <%= @group.end_date.to_s(:short) %>
+        	</div> 
+
+  			</div>
+          <ul class="breadcrumbs admin large-3">
+            <li><%= link_to 'Delete Group', @group, method: :delete %></li>
+            <li><%= link_to 'Edit Group', edit_group_path(@group) %></li>
+          </ul>
     </div>
 
-    <div class="row">
-      <div class="large-8 medium-8 columns">
-        <h5>something:</h5>
-        <!-- Grid Example -->
+<!-- End of Groups info Container -->
 
-        <div class="row">
-          <div class="large-12 columns">
-            <div class="callout panel">
-              <p><strong>something</strong>something</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-        </div>
-        
-        <hr />
-                
-        <h5>We bet you&rsquo;ll need a form somewhere:</h5>
-        <form>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-12.columns" />
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-4 medium-4 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-4.columns" />
-				    </div>
-				    <div class="large-4 medium-4 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-4.columns" />
-				    </div>
-				    <div class="large-4 medium-4 columns">
-				      <div class="row collapse">
-				        <label>Input Label</label>
-				        <div class="small-9 columns">
-				          <input type="text" placeholder="small-9.columns" />
-				        </div>
-				        <div class="small-3 columns">
-				          <span class="postfix">.com</span>
-				        </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Select Box</label>
-				      <select>
-				        <option value="husker">Husker</option>
-				        <option value="starbuck">Starbuck</option>
-				        <option value="hotdog">Hot Dog</option>
-				        <option value="apollo">Apollo</option>
-				      </select>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-6 medium-6 columns">
-				      <label>Choose Your Favorite</label>
-				      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
-				      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
-				    </div>
-				    <div class="large-6 medium-6 columns">
-				      <label>Check these out</label>
-				      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Textarea Label</label>
-				      <textarea placeholder="small-12.columns"></textarea>
-				    </div>
-				  </div>
-				</form>
-      </div>     
+<hr />
 
-      <div class="large-4 medium-4 columns">
+<!-- Begin Sign up Div -->
+
+
+<div class = "row">
+  <div class="large-6 columns">
+    <h5 id="group-header">Members</h5>
+    <div class="panel">
+    <% @group.users.each do |user| %>
+      <li><%= user.username %></li>
+    <% end %> 
+    </div>
+  </div>
+</div>
+  
+    <% begin %>
+    <% @group.users.find(current_user.id) %>
+    <% rescue %>
       <% if current_user %>
         <%= form_for [@group, @user_group] do |f| %>
-          <%= f.hidden_field :user_id, :value => current_user.id %>   
-          <%= f.hidden_field :group_id, :value => @group.id %>     
-          <%= f.submit "Join Group", class: "medium success button" %><br/>
+        <%= f.hidden_field :user_id, :value => current_user.id %>   
+        <%= f.hidden_field :group_id, :value => @group.id %>     
+        <%= f.submit "Join Group", class: "large-12 success button" %><br/>
         <% end %>
       <% else %>
-        <button class="medium success button" data-reveal-id="myModal">Login to Join!</button>
-      <% end %>
-				<div class="panel">
-        	<h3>SIGN UP TODAY!</h3>
-        	<a href="http://foundation.zurb.com/docs/">Chat Box</a>          
-        </div>
-        <div class="panel">
-          <h3>Members</h3>
-          <% @group.users.each do |user| %>
-            <li><%= user.username %></li>
-          <% end %>        
-        </div>
+        <button class="large-12 success button" data-reveal-id="myModal">Login to Join!</button>
+      <% end %>  
+    <% end %>
+
+
+  </div> 
+</div>
+
+<!-- End of all Groups info panels -->
+        
+
+         <div class="large-4 medium-4 columns">
+      
+
+
+
+
+
       </div>
     </div>
     

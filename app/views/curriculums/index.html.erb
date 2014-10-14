@@ -15,13 +15,13 @@
       <dl class="accordion " data-accordion>
          <% @curriculums.each do |c| %>
          <dd class="accordion-navigation dropdown">
-            <a href='#panel<%= c.id %>'>+  <%= c.title %></a>
+            <a href='#panel<%= c.id %>'>+  <%= c.title %><p id="creator">Created by: <%= c.user.full_name %></p></a>
             <div id='panel<%= c.id %>' class="content curriclumInfo">
             <ul class="dropdown">
                <li><strong><%= c.title %></strong></li>
                <li><%= c.topic %></li><br>
                <li><%= c.summary %></li>
-               <li><%= truncate(c.syllabus, length: 155, separator: '') %></li>
+               <li><%= truncate(c.syllabus, length: 300, separator: '') %></li>
                <li><%= link_to "More Info on Framework", c %></li><br>
                <li><strong>Course Length: </strong><%= c.timeframe %></li>
                
@@ -32,7 +32,11 @@
          </dd>
          <% end %>
       </dl>
-      <h5 class="subheader" style="text-align: center;">Today is a very exciting day</h5>
+     
+      <div class="large-4 small-3 columns">
+            <%= link_to 'Create your own curriculum! +', new_curriculum_path, class:"tiny button expand" %>
+        </div>
    </div>
+    <h5 class="subheader" style="text-align: center;">Today is a very exciting day</h5>
 </div>
 

@@ -1,2 +1,8 @@
 <h1>Curriculums#edit</h1>
+<% if current_user && current_user.id ==@curriculum.user_id %>
 <%= render 'curriculum_form', object: @curriculum %>
+<% elsif current_user %>
+Restricted Access.
+<% else %>
+Please Login to Edit this Curriculum.
+<% end %>

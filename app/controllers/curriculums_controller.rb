@@ -44,6 +44,6 @@ respond_to :html, :json
   private
 
   def required_params
-    params.require(:curriculum).permit(:title, :topic, :summary, :syllabus, :timeframe)
+    params.require(:curriculum).permit(:title, :topic, :summary, :syllabus, :timeframe, :user_id)
   end
 end

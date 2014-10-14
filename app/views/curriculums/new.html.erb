@@ -1,2 +1,9 @@
 <h1>Create a Curriculum Here!</h1>
+
+<% if current_user && current_user.privilege > 1 %>
 <%= render 'curriculum_form', object: @curriculum %>
+<% elsif current_user %>
+Restricted Access.
+<% else %>
+Please Login to Create a Curriculum.
+<% end %>

@@ -24,6 +24,7 @@
 
 #groups-header {
 	text-align: center;
+	font-weight: 900;
 }
 
 
@@ -42,9 +43,11 @@
 	height: 100px;
 	border-radius: 0px 6px 6px 0px;
 	box-shadow: 0px 10px 23px -13px rgba(0,0,0,0.35);
-	overflow: scroll;
+	overflow: none;
+}
 
-
+.column, .columns{
+  min-height: 1px;
 }
 
 .icon-bar {
@@ -71,5 +74,55 @@
 .footer {
 	// background: RGBA(38, 38, 38, 1);
 	height: 100px;
+}
+
+////****************
+/// SHOW GROUPS PAGE
+///******************
+
+#group-header {
+text-align: center;
+margin: 0;
+background: #5981A7;
+border-radius: 4px 7px 0px 0px;
+color: white;
+padding: 14px;
+font-size: 23px;
+font-weight: 900;
+}
+
+#groups-summary {
+	padding: 10px 0 10px 0;
+}
+
+.syllabus {
+	color: #D4D4D4;
+
+}
+
+.groups-info-container {
+	background: white;
+	// border-radius: 4px;
+}
+
+.admin {
+	margin-left: 0px;
+	list-style: none;
+}
+
+.admin li {
+	float: right;
+	padding-right: 10px;
+	padding-left: 0px;
+}
+
+.panel {
+	list-style: none;
+}
+
+.members {
+	font-size: 20px;
+	background-color: white;
+
 }
 

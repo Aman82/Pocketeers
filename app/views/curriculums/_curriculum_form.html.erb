@@ -4,6 +4,8 @@
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+
 	<%= f.label :topic %>
 	<%= f.text_field :topic %>
 
