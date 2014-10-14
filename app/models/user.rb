@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   # REGULAR VALIDATOR
-  validates_presence_of :first_name, :last_name, :email, :email_confirmation
+  validates_presence_of :username, :first_name, :last_name, :email, :email_confirmation
+  validates_uniqueness_of :username, :email
 
   # EMAIL VALIDATOR
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }

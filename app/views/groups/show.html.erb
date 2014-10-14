@@ -67,28 +67,27 @@
 <div class = "row">
   <div class="large-6 columns">
     <h5 id="group-header">Members</h5>
-  </div>
-</div>
-
-<div class="row">
-  <div class="panel large-6 columns members">
-    <h3>Current Members</h3>
+    <div class="panel">
     <% @group.users.each do |user| %>
       <li><%= user.username %></li>
     <% end %> 
+    </div>
   </div>
 </div>
-
-
+  
+    <% begin %>
+    <% @group.users.find(current_user.id) %>
+    <% rescue %>
       <% if current_user %>
-      <%= form_for [@group, @user_group] do |f| %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>   
-      <%= f.hidden_field :group_id, :value => @group.id %>     
-      <%= f.submit "Join Group", class: "medium success button" %><br/>
-      <% end %>
-    <% else %>
-      <button class="large-12 success button" data-reveal-id="myModal">Login to Join!</button>
-    <% end %>  
+        <%= form_for [@group, @user_group] do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>   
+        <%= f.hidden_field :group_id, :value => @group.id %>     
+        <%= f.submit "Join Group", class: "medium success button" %><br/>
+        <% end %>
+      <% else %>
+        <button class="large-12 success button" data-reveal-id="myModal">Login to Join!</button>
+      <% end %>  
+    <% end %>
 
 
   </div> 
