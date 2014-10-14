@@ -53,5 +53,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'factory_girl_rails'
+  gem "capybara"
+  gem "database_cleaner"
+  gem 'selenium-webdriver'
 end
 
