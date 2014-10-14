@@ -244,14 +244,18 @@ function collide(node) {
 <% @groups.each do |group| %>
   <div class="large-4 columns">
     <div class="pagesGroup panel">
+      <div class="row pagesGroup_text">
+      <div class="large-12 columns">
       <h4><%= group.curriculum.title %> </h4>
-      <div class="row">
-        <div class="large-12 columns">
-          <p><%= truncate(group.curriculum.summary, length: 55, separator: '') %> </p>
-          <%= link_to "Explore", group, class: "tiny button" %>
+        <p><%= truncate(group.curriculum.summary, length: 55, separator: '') %> </p>
         </div>
-      </div>
+        </div>
+        <div class="row">
+        <div class="large-12 columns">
+        <%= link_to "Explore", group, class: "tiny button" %></div>
+        </div>
     </div>
+    
   </div>
   <% end %>
 </div>
