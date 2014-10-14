@@ -7,48 +7,26 @@ RSpec.describe GroupsController, :type => :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
+    it "returns a collection of groups" do
+      get :index
+      @groups = assigns(:groups)
+      expect(@groups).to match_array(Group.all)
+    end
+    it "any of  the groups in a collection should be a Group" do
+      get :index
+      @groups = assigns(:groups)
+      expect(@groups.sample).to be_a(Group)
+    end
   end
 
   describe "GET show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+    it "should return a Group" do
+      get :show, id:1      # Group.all.first  Group.first.id
+      @group = assigns(:group)
+      expect(@group).to be_a(Group)
+    end
+    it "raises an error if Group with an id is 0 or doesnot exist" do
+    expect {get :show, id: 0}.to raise_error
     end
   end
-
-  describe "GET new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end

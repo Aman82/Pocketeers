@@ -7,47 +7,26 @@ RSpec.describe UsersController, :type => :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
+    it "returns a collection of users" do
+      get :index
+      @users = assigns(:users)
+      expect(@users).to match_array(User.all)
+    end
+    it "any of  the users in a collection should be a User" do
+      get :index
+      @users = assigns(:users)
+      expect(@users.sample).to be_a(User)
+    end
   end
 
   describe "GET show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+    it "should return a User" do
+      get :show, id:1      # User.all.first  User.first.id
+      @user = assigns(:user)
+      expect(@user).to be_a(User)
     end
-  end
-
-  describe "GET new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+    it "raises an error if User with an id is 0 or doesnot exist" do
+    expect {get :show, id: 0}.to raise_error
     end
   end
 

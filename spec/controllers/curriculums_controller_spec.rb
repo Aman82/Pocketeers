@@ -7,47 +7,26 @@ RSpec.describe CurriculumsController, :type => :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
+    it "returns a collection of curriculums" do
+      get :index
+      @curriculums = assigns(:curriculums)
+      expect(@curriculums).to match_array(Curriculum.all)
+    end
+    it "any of  the curriculums in a collection should be a Curriculum" do
+      get :index
+      @curriculums = assigns(:curriculums)
+      expect(@curriculums.sample).to be_a(Curriculum)
+    end
   end
 
   describe "GET show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+    it "should return a Curriculum" do
+      get :show, id:1      # Curriculum.all.first  Curriculum.first.id
+      @curriculum = assigns(:curriculum)
+      expect(@curriculum).to be_a(Curriculum)
     end
-  end
-
-  describe "GET new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+    it "raises an error if Curriculum with an id is 0 or doesnot exist" do
+    expect {get :show, id: 0}.to raise_error
     end
   end
 
